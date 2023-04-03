@@ -1,0 +1,117 @@
+
+/* 상단바 */
+
+header {
+    border: 1px solid red;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+header > div {
+    display: inline-block;
+    font-size: 20px;
+    
+}
+header > div > a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 본문 */
+section{
+    border: 1px solid red;
+    height: 800px;
+    font-size: 0;
+    
+    
+}
+section > *{
+    vertical-align: top;
+    border: 1px solid red;
+    display: inline-block;
+    
+}
+
+section > article {
+    /* border 삭제후 width:80%으로 수정 */
+    width: 79%;
+    height: 100%;
+}
+
+
+/* 본문영역1(사이드, 탭) */
+.main_tab{
+    font-size: 10px;   
+    width: 10%;
+    height: 100%;
+}
+
+
+/* 본문영역2(랭킹) */
+.main_ranking{
+    font-size: 10px;
+    width: 100%;
+    height: 50%;
+}
+
+/* 본문영역3(후기) */
+.main_review{
+    font-size: 10px;
+    width: 100%;
+    height: 50%;
+}
+
+
+/* 하단바 */
+footer{
+    border: 1px solid red;
+    height: 100px;
+}
+
+
+/* 로고 박스 */
+.logo_div{
+    width: 100px;
+}
+
+/* 로그인 박스 */
+.login_div{
+    float: right;
+}
+.login_div > div{
+    display: inline-block;
+}
+.login_div a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* 아코디언 */
+details {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: .5em .5em 0;
+    margin-bottom: 1em;
+}
+summary {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+    cursor: pointer;
+}
+details[open] {
+    padding: .5em;
+}
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+    background-color: #fff0c0;
+    border-radius: 10px 10px 0 0;
+}
+
+
+/* 이미지 슬라이드 */
+
