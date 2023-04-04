@@ -7,24 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인화면</title>
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
-    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/main/main.css" type="text/css">
+    <script type="text/javascript" src="/js/main/main.js"></script>
 </head>
 <body>
     <header>
         <div class="logo_div">
-            <a href=""><img src="/image/shop_logo.jpg" width="100%"></a>
+            <a href="main"><img src="/image/logo/shop_logo.jpg" width="100%"></a>
         </div>
         <div>
-            <a href="">주문배송조회</a>
+            <a href="mypage">주문배송조회</a>
             
         </div>
         <div>
-            <a href="">마이페이지</a>
+            <a href="mypage">마이페이지</a>
             
         </div>
         <div>
-            <a href="">고객센터</a>
+            <a href="service">고객센터</a>
             
         </div>
         <div>
@@ -32,10 +32,10 @@
         </div>
         <div class="login_div">
             <div>
-                <a href="">로그인</a>
+                <a href="login">로그인</a>
             </div>
             <div>
-                <a href="">회원가입</a>
+                <a href="signup">회원가입</a>
             </div>
         </div>
     </header>
@@ -65,9 +65,6 @@
         <article class="main_article">
             <article class="main_ranking">
                 selcet * from product_info order by rate
-
-
-                
             </article>
             <article class="main_review">
                 메인(후기)
