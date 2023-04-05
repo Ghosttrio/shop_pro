@@ -12,7 +12,18 @@ public class LoginService {
 	@Autowired
 	public LoginDAO loginDAO;
 	
+	@Autowired
+	private LoginDTO dto;
+	
+//	회원가입
 	public void insertMembers(LoginDTO loginDTO) {
 		loginDAO.insertMembers(loginDTO);
 	}
+	
+//	로그인 회원정보 조회
+	public LoginDTO selectMembers(LoginDTO loginDTO) {
+		dto = loginDAO.selectMembers(loginDTO);
+		return dto;
+	}
+	
 }

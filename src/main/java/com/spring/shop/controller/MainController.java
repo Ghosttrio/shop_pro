@@ -27,13 +27,6 @@ public class MainController {
 		return "signup/signup";
 	}
 	
-//	고객센터
-	@GetMapping("/service")
-	public String service(){
-		System.out.println("고객센터 출력");
-		return "service/service";
-	}
-	
 //	관리자페이지(메인)
 	@GetMapping("/manager_main")
 	public String manager_main(){

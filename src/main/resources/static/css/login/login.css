@@ -1,19 +1,40 @@
-
+/* 기본 바디 설정 */
 body {
-    text-align: center;
+    background-color: #f1f1f1;
+    width:100%;
+    height:100%;
 }
 
+/* 로그인 입력창 크기 */
 #wrap {
-    border: 1px solid red;
-    display: inline-block;
-    margin-top: 100px;
-    width: 1000px;
+	background-color: white;
+	width:30%;
+	height:100vh;
+	margin:0 auto;
+	padding:20px;
+	padding-left:70px;
+	padding-right:70px;
 }
 
-#login_header{
-    font-size: 100px;
+.id_wrap > input{
+	margin-top:10px;
+	width:100%;
+	height:35px;
+}
+.pw_wrap {
+	margin-top:20px;
+}
+.pw_wrap > input{
+	margin-top:5px;
+	width:100%;
+	height:35px;
 }
 
-#login_id {
-    margin-top: 50px;
+.btn_wrap > input{
+	margin-top:5px;
+	width:100%;
+	height:45px;
+}
+.btn_wrap{
+	margin-top:10px;
 }

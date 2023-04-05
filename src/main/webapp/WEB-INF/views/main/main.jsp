@@ -24,10 +24,6 @@
             
         </div>
         <div>
-            <a href="service">고객센터</a>
-            
-        </div>
-        <div>
             <input type="search" placeholder="상품을 입력하세요">
         </div>
         <div class="login_div">
@@ -71,9 +67,5 @@
             </article>
         </article>
     </section>
-    
-    <footer>
-        하단바
-    </footer>
 </body>
 </html>

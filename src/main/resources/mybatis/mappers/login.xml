@@ -5,10 +5,17 @@
 
 <mapper namespace="mapper.login">
 
+	<!-- 회원가입 -->
 	<insert id="signup" parameterType="loginDTO">
 		<![CDATA[
 			insert into account(id, pw, name, email, addr) values(#{id}, #{pw}, #{name}, #{email}, #{addr})
 		]]>
 	</insert>
 	
+	<!-- 로그인 -->
+	<select id="login" parameterType="loginDTO" resultType="loginDTO">
+		<![CDATA[
+			select * from account where id = #{id} and pw = #{pw}
+		]]>
+	</select>
 </mapper>

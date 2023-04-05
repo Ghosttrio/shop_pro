@@ -1,5 +1,5 @@
 
-/* 상단바 */
+/* �긽�떒諛� */
 
 header {
     border: 1px solid red;
@@ -19,7 +19,7 @@ header > div > a {
     color: black;
 }
 
-/* 본문 */
+/* 蹂몃Ц */
 section{
     border: 1px solid red;
     height: 800px;
@@ -35,13 +35,13 @@ section > *{
 }
 
 section > article {
-    /* border 삭제후 width:80%으로 수정 */
+    /* border �궘�젣�썑 width:80%�쑝濡� �닔�젙 */
     width: 79%;
     height: 100%;
 }
 
 
-/* 본문영역1(사이드, 탭) */
+/* 蹂몃Ц�쁺�뿭1(�궗�씠�뱶, �꺆) */
 .main_tab{
     font-size: 10px;   
     width: 10%;
@@ -49,14 +49,14 @@ section > article {
 }
 
 
-/* 본문영역2(랭킹) */
+/* 蹂몃Ц�쁺�뿭2(�옲�궧) */
 .main_ranking{
     font-size: 10px;
     width: 100%;
     height: 50%;
 }
 
-/* 본문영역3(후기) */
+/* 蹂몃Ц�쁺�뿭3(�썑湲�) */
 .main_review{
     font-size: 10px;
     width: 100%;
@@ -64,19 +64,14 @@ section > article {
 }
 
 
-/* 하단바 */
-footer{
-    border: 1px solid red;
-    height: 100px;
-}
 
 
-/* 로고 박스 */
+/* 濡쒓퀬 諛뺤뒪 */
 .logo_div{
     width: 100px;
 }
 
-/* 로그인 박스 */
+/* 濡쒓렇�씤 諛뺤뒪 */
 .login_div{
     float: right;
 }
@@ -89,7 +84,7 @@ footer{
     font-weight: 600;
 }
 
-/* 아코디언 */
+/* �븘肄붾뵒�뼵 */
 details {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -113,5 +108,5 @@ details[open] summary {
 }
 
 
-/* 이미지 슬라이드 */
+/* �씠誘몄� �뒳�씪�씠�뱶 */
 
