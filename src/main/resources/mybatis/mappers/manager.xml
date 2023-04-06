@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.manager">
+
+	<!-- 상품추가 -->
+	<insert id="addProduct" parameterType="managerDTO">
+		<![CDATA[
+			insert into product values(#{product_code}, #{product_name}, #{product_price}, #{product_brand}, #{product_option}, #{product_explain}, #{product_image})
+		]]>
+	</insert>
+	
+	<select id="selectProduct" resultType="managerDTO">
+		<![CDATA[
+			select * from product
+		]]>
+	</select>
+	
+	<delete id="deleteProduct" parameterType="String">
+		<![CDATA[
+			delete from product where product_code = #{product_code}
+		]]>
+	</delete>
+	
+	<update id="updateProduct" parameterType="managerDTO">
+		<![CDATA[
+			update product 
+			set product_code = #{product_code}, product_name = #{product_name}, 
+				product_price = #{product_price}, product_brand = #{product_brand}, 
+				product_option = #{product_option}, product_explain = #{product_explain}, 
+				product_image = #{product_image}
+			where product_code = #{product_code}
+		]]>
+	</update>
+	
+	<select id="selectProduct_update" parameterType="String" resultType="managerDTO">
+		<![CDATA[
+			select * from product where product_code = #{product_code}
+		]]>
+	</select>
+	
+	
+	
+	
+</mapper>

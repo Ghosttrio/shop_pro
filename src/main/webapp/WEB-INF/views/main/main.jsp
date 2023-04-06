@@ -40,6 +40,9 @@
             <details>
                 <summary>상의</summary>
                 <p>옷1</p>
+                <form action="info">
+                <input type="submit" value="이동">
+            	</form>
             </details>
             <details>
                 <summary>하의</summary>

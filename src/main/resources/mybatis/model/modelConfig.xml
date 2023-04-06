@@ -6,5 +6,6 @@
 	<typeAliases>
 		<typeAlias type="com.spring.shop.dto.MainDTO"  alias="mainDTO" />
 		<typeAlias type="com.spring.shop.dto.LoginDTO"  alias="loginDTO" />
+		<typeAlias type="com.spring.shop.dto.ManagerDTO"  alias="managerDTO" />
 	</typeAliases>
 </configuration>
