@@ -26,7 +26,8 @@ public class ManagerController {
 			@RequestParam("product_brand") String product_brand,
 			@RequestParam("product_option") String product_option,
 			@RequestParam("product_explain") String product_explain,
-			@RequestParam("product_image") String product_image
+			@RequestParam("product_image") String product_image,
+			@RequestParam("product_type") String product_type
 			) {
 		
 		managerDTO.setProduct_code(product_code);
@@ -36,6 +37,7 @@ public class ManagerController {
 		managerDTO.setProduct_option(product_option);
 		managerDTO.setProduct_explain(product_explain);
 		managerDTO.setProduct_image(product_image);
+		managerDTO.setProduct_type(product_type);
 		managerService.addProduct(managerDTO);
 		
 		
@@ -65,7 +67,8 @@ public class ManagerController {
 			@RequestParam("product_brand") String product_brand,
 			@RequestParam("product_option") String product_option,
 			@RequestParam("product_explain") String product_explain,
-			@RequestParam("product_image") String product_image
+			@RequestParam("product_image") String product_image,
+			@RequestParam("product_type") String product_type
 			) {
 		
 		managerDTO.setProduct_code(product_code);
@@ -75,6 +78,7 @@ public class ManagerController {
 		managerDTO.setProduct_option(product_option);
 		managerDTO.setProduct_explain(product_explain);
 		managerDTO.setProduct_image(product_image);
+		managerDTO.setProduct_type(product_type);
 		managerService.updateProduct(managerDTO);
 		
 		System.out.println("상품 수정 실행");

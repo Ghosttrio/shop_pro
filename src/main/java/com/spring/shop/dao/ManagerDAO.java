@@ -1,6 +1,7 @@
 package com.spring.shop.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,25 @@ public class ManagerDAO {
 		return selectProduct;
 	}
 	
+	public List selectProduct(String product_code) {
+		List selectProduct =  sqlSession.selectList("mapper.manager.selectProduct_product", product_code);
+		return selectProduct;
+	}
+	
+	
+	public int selectProduct_type(String product_type) { 
+		int selectProduct = sqlSession.selectOne("mapper.manager.selectProduct_type", product_type);
+		return selectProduct; 
+	}
+	 
+	
+	public List selectProduct_paging(ManagerDTO managerDTO) {
+		List selectProduct =  sqlSession.selectList("mapper.manager.selectProduct_paging", managerDTO);
+		return selectProduct;
+	}
+	
+	
+	
 	public void deleteProduct(String product_code) {
 		sqlSession.delete("mapper.manager.deleteProduct", product_code);
 	}
@@ -35,5 +55,8 @@ public class ManagerDAO {
 		List selectProduct =  sqlSession.selectList("mapper.manager.selectProduct_update", product_code);
 		return selectProduct;
 	}
+	
+	
+	
 	
 }

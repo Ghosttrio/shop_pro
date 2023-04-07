@@ -15,3 +15,25 @@ window.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+
+document.querySelector(".like_btn").addEventListener("click", function(){
+  	 $.ajax({
+		    url: "like.do",
+		    type: "POST",
+		    dataType: "html",
+		   	data:{
+	            command : $('.command').val(),
+	            articleNO1 : $('.articleNO1').val()
+	        },
+		    success:function(data){  
+		    	swal("Notice","좋아요가 반영되었습니다.");
+		    	let a = data;
+		    	console.log(a);
+		    	$(".like_btn").val("♡ "+a);
+		    },   
+		    error: 
+		    function (request, status, error){  
+		    }
+		  });
+  })
+	

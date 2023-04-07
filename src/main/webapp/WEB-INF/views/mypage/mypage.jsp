@@ -20,12 +20,11 @@
         </div>
         <div id="bottom">
             <div>주문내역조회</div>
-            <div>최근본상품</div>
+            <div>최근본상품</div> <!--할수있으면하기  -->
             <div>장바구니</div>
-            <div>구매후기</div>
-            <div>상품문의</div>
-            <div>좋아요</div>
-            <div>표시창</div>
+            <div>작성한구매후기</div>
+            <div>작성한상품문의</div>
+            <div>좋아요 클릭한 상품</div>
         </div>
     </div>
 </body>

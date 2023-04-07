@@ -18,6 +18,7 @@
 		    옵션 : <input type="text" name="product_option" value="${productList.product_option }"> <br>
 		    설명 : <input type="text" name="product_explain" value="${productList.product_explain }"> <br>
 	    	사진 : <input type="text" name="product_image" value="${productList.product_image }"> <br>
+	    	분류 : <input type="text" name="product_type" value="${productList.product_type }"> <br>
 		    <input type="submit">
 		    <input type="reset">
 	    </form>

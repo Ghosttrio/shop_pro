@@ -16,10 +16,6 @@
             <a href="main"><img src="/image/logo/shop_logo.jpg" width="100%"></a>
         </div>
         <div>
-            <a href="mypage">주문배송조회</a>
-            
-        </div>
-        <div>
             <a href="mypage">마이페이지</a>
             
         </div>
@@ -40,13 +36,19 @@
             <details>
                 <summary>상의</summary>
                 <p>옷1</p>
-                <form action="info">
-                <input type="submit" value="이동">
+                <form action="product">
+                	<input type="hidden" name="product_type" value="top">
+                	<input type="submit" value="이동">
             	</form>
+                
             </details>
             <details>
                 <summary>하의</summary>
                 <p>옷2</p>
+                <form action="product">
+                	<input type="hidden" name="product_type" value="bottom">
+                	<input type="submit" value="이동">
+            	</form>
             </details>
             <details>
                 <summary>아우터</summary>

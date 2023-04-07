@@ -1,6 +1,8 @@
 package com.spring.shop.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,24 @@ public class ManagerService {
 		List selectProduct = managerDAO.selectProduct();
 		return selectProduct;
 	}
+	
+	public List selectProduct(String product_code) {
+		List selectProduct = managerDAO.selectProduct(product_code);
+		return selectProduct;
+	}
+	
+	public int selectProduct_type(String product_type) { 
+		int selectProduct = managerDAO.selectProduct_type(product_type); 
+		return selectProduct; 
+	}
+	 
+	
+	public List selectProduct_paging(ManagerDTO managerDTO) {
+		List selectProduct = managerDAO.selectProduct_paging(managerDTO);
+		return selectProduct;
+	}
+
+	
 	public void deleteProduct(String product_code) {
 		managerDAO.deleteProduct(product_code);
 	}

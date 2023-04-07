@@ -16,7 +16,7 @@
     <div id="wrap">
         <div>
         	<form name="managerForm">
-				<input class="add" type="button" value="영화추가하기">
+				<input class="add" type="button" value="상품추가하기">
 			</form>
         </div>
         

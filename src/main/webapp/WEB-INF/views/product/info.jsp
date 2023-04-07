@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <title>로그인</title>
     <link rel="stylesheet" href="css/info/info.css" type="text/css">
     <script type="text/javascript" src="js/info/info.js"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
  <header>
@@ -60,6 +61,16 @@
             </details>
         </aside>
         <article class="main_article">
+        <c:forEach var="productList" items="${productList }">
+        	${productList.product_name }
+        	
+        	<input class="like_btn" type="button" value="좋아요">
+        	<div>댓글 대댓글</div>
+        	<div>qna게시판</div>
+        	
+        </c:forEach>
+        
+        <!-- 
         	<div class="product_brand">브랜드이름</div>
           	<div class="product_name">상품제목</div>
 	        <div class="product_photo">상품사진</div>
@@ -71,9 +82,10 @@
 	        <div class="product_pay">구매버튼</div>
 	        <div class="product_info">상품정보란, 더보기 구현</div>
 	        <div class="product_review">후기(사진업로드, 별점, 댓글, 대댓글, 페이징)</div>
-	        <div class="product_qna">상품문의 게시판</div>
+	        <div class="product_qna">상품문의 게시판</div> -->
         </article>
     </section>
     
 </body>
+
 </html>

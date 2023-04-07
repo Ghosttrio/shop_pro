@@ -16,6 +16,7 @@
 	    옵션 : <input type="text" name="product_option"> <br>
 	    설명 : <input type="text" name="product_explain"> <br>
     	사진 : <input type="text" name="product_image"> <br>
+    	분류 : <input type="text" name="product_type"> <br>
 	    <input type="submit">
 	    <input type="reset">
     </form>

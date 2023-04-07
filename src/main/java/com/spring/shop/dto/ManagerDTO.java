@@ -18,6 +18,13 @@ public class ManagerDTO {
 	private String product_option;
 	private String product_explain;
 	private String product_image;
+	private String product_type;
+
+	
+	private int section;
+	private int pageNum;
+	private int total_product;
+	
 	
 	
 	
