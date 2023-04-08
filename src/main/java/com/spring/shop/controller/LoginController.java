@@ -54,14 +54,9 @@ public class LoginController {
 			Model model, HttpSession session,
 			@RequestParam("id") String id,
 			@RequestParam("pw") String pw) {
-		System.out.println(id);
-		System.out.println(pw);
 		
 		loginDTO.setId(id);
 		loginDTO.setPw(pw);
-		
-		
-	    
 
 	    dto = loginService.selectMembers(loginDTO);
 //		널값이면 다시입력 출력 아니면 로그인

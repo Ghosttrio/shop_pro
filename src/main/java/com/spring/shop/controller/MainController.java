@@ -146,11 +146,25 @@ public class MainController {
 //	제품상세(제품마다출력)
 	@GetMapping("/info")
 	public String info(Model model,
-			@RequestParam("product_code") String product_code
+			@RequestParam("product_code") String product_code,
+//			리뷰페이징용 페이징 넘버
+			@RequestParam(value="section", required=false) String section,
+			@RequestParam(value="pageNum", required=false) String pageNum
 			){
 		System.out.println("코드번호 : " + product_code + " 제품상세 출력");
 		List productList = managerService.selectProduct(product_code);
 		model.addAttribute("productList",productList);
+		
+		
+//		리뷰창
+		int section_ = Integer.parseInt(((section==null) ? "1" : section));
+		int pageNum_ = Integer.parseInt(((pageNum==null) ? "1" : pageNum));
+		managerDTO.setSection(section_);
+		managerDTO.setPageNum(pageNum_);
+		managerDTO.setProduct_code(product_code);
+		
+		List reviewList = managerService.selectReview(managerDTO);
+		model.addAttribute("reviewList",reviewList);
 		
 		return "product/info";
 	}

@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="css/info/info.css" type="text/css">
-    <script type="text/javascript" src="js/info/info.js"></script>
+    <link rel="stylesheet" href="css/product/info.css" type="text/css">
+    <script type="text/javascript" src="js/product/info.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
@@ -67,6 +67,15 @@
         	<input class="like_btn" type="button" value="좋아요">
         	<div>댓글 대댓글</div>
         	<div>qna게시판</div>
+        	
+        </c:forEach>
+        
+        
+        <c:forEach var="reviewList" items="${reviewList }">
+        <div style="border:1px solid red">
+        	<div>${reviewList.review_num }</div>
+        	<div>${reviewList.review_content }</div>
+        </div>
         	
         </c:forEach>
         

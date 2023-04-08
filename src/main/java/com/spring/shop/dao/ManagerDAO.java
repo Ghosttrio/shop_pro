@@ -31,6 +31,14 @@ public class ManagerDAO {
 	}
 	
 	
+	public List selectReview(ManagerDTO managerDTO) {
+		List selectReview =  sqlSession.selectList("mapper.manager.selectReview", managerDTO);
+		return selectReview;
+	}
+	
+	
+	
+	
 	public int selectProduct_type(String product_type) { 
 		int selectProduct = sqlSession.selectOne("mapper.manager.selectProduct_type", product_type);
 		return selectProduct; 

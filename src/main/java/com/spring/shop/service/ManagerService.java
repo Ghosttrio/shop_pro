@@ -31,6 +31,15 @@ public class ManagerService {
 		return selectProduct;
 	}
 	
+	
+//	상품코드에 맞는 리뷰출력
+	public List selectReview(ManagerDTO managerDTO) {
+		List selectReview = managerDAO.selectReview(managerDTO);
+		return selectReview;
+	}
+	
+	
+	
 	public int selectProduct_type(String product_type) { 
 		int selectProduct = managerDAO.selectProduct_type(product_type); 
 		return selectProduct; 

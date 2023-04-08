@@ -26,6 +26,14 @@ public class ManagerDTO {
 	private int total_product;
 	
 	
+	private int review_num;
+	private int review_parentNum;
+	private String review_productId;
+	private String review_userId;
+	private String review_content;
+	private int review_rate;
+	
+	
 	
 	
 }
