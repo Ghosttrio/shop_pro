@@ -38,3 +38,9 @@ body {
 .btn_wrap{
 	margin-top:10px;
 }
+
+#logo_header{
+	margin-top:45px;
+	margin-bottom:30px;
+	text-align:center;
+}

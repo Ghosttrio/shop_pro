@@ -25,11 +25,21 @@ public class ManagerService {
 		List selectProduct = managerDAO.selectProduct();
 		return selectProduct;
 	}
+	/*
+	 * public List selectProduct2() { List selectProduct =
+	 * managerDAO.selectProduct2(); return selectProduct; }
+	 */
 	
 	public List selectProduct(String product_code) {
 		List selectProduct = managerDAO.selectProduct(product_code);
 		return selectProduct;
 	}
+	
+	public List product_ranking() {
+		List product_ranking = managerDAO.product_ranking();
+		return product_ranking;
+	}
+	
 	
 	
 //	상품코드에 맞는 리뷰출력
@@ -38,7 +48,11 @@ public class ManagerService {
 		return selectReview;
 	}
 	
-	
+//	그냥 타입출력
+	public List selectProduct_type() { 
+		List selectProduct = managerDAO.selectProduct_type(); 
+		return selectProduct; 
+	}
 	
 	public int selectProduct_type(String product_type) { 
 		int selectProduct = managerDAO.selectProduct_type(product_type); 

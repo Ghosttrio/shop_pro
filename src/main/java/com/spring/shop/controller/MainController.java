@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.spring.shop.dto.ManagerDTO;
 import com.spring.shop.service.ManagerService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
 
@@ -23,8 +25,32 @@ public class MainController {
 	
 //	메인화면
 	@GetMapping("/main")
-	public String home(){
+	public String home(Model model, HttpSession session){
 		System.out.println("메인 출력");
+		
+		
+		
+		List product_type = managerService.selectProduct_type();
+		model.addAttribute("product_type",product_type);
+		
+		
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
+		
+		
+		
+//		전체 상품 정보 출력
+		List productList_all = managerService.selectProduct();
+		model.addAttribute("productList_all",productList_all);
+		
+//		랭킹 출력
+		List product_ranking = managerService.product_ranking();
+		model.addAttribute("product_ranking",product_ranking);
+		
+		
+		
+		
+		
 		return "main/main";
 	}
 	
@@ -167,5 +193,14 @@ public class MainController {
 		model.addAttribute("reviewList",reviewList);
 		
 		return "product/info";
+	}
+	
+	
+//	주문창
+	@GetMapping("/order")
+	public String order(){
+		System.out.println("결제창출력");
+		
+		return "pay/order";
 	}
 }

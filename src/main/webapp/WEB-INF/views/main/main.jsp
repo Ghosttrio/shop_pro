@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,66 +12,144 @@
     <script type="text/javascript" src="/js/main/main.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo_div">
-            <a href="main"><img src="/image/logo/shop_logo.jpg" width="100%"></a>
-        </div>
-        <div>
-            <a href="mypage">마이페이지</a>
-            
-        </div>
-        <div>
-            <input type="search" placeholder="상품을 입력하세요">
-        </div>
-        <div class="login_div">
-            <div>
-                <a href="login">로그인</a>
-            </div>
-            <div>
-                <a href="signup">회원가입</a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <section>
-        <aside class="main_tab">
-            <details>
-                <summary>상의</summary>
-                <p>옷1</p>
-                <form action="product">
-                	<input type="hidden" name="product_type" value="top">
-                	<input type="submit" value="이동">
-            	</form>
-                
-            </details>
-            <details>
-                <summary>하의</summary>
-                <p>옷2</p>
-                <form action="product">
-                	<input type="hidden" name="product_type" value="bottom">
-                	<input type="submit" value="이동">
-            	</form>
-            </details>
-            <details>
-                <summary>아우터</summary>
-                <p>옷3</p>
-            </details>
-            <details>
-                <summary>스커트</summary>
-                <p>옷4</p>
-            </details>
-            <details>
-                <summary>신발</summary>
-                <p>옷5</p>
-            </details>
-        </aside>
         <article class="main_article">
             <article class="main_ranking">
-                selcet * from product_info order by rate
+            	<h3>Ranking</h3>
+            	<div>
+            		<c:forEach var="ranking" items="${product_ranking }" varStatus="status">
+            			<c:forEach var="productList_all" items="${productList_all }">
+            			<div style="display:inline-block;">
+           					<c:if test="${productList_all.product_code == ranking.review_productId }">
+	           					<div style="border:1px solid black; width:200px; height:250px; ">
+	           						<div>${status.count }위</div>
+	           						<div>
+	           							${productList_all.product_name}
+	           						</div>
+           						</div>
+           					</c:if>
+            			</div>
+            			</c:forEach>
+            		</c:forEach>
+            	</div>
             </article>
             <article class="main_review">
-                메인(후기)
+                <h3>LookBook</h3>
             </article>
         </article>
     </section>
 </body>
 </html>
+
+<%-- 
+<div>
+				    <c:forEach var="product_type" items="${product_type }">
+	                	<div>
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${product_type.product_type }">
+			                	<input type="submit" value="${product_type.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:forEach>
+			    </div>
+
+ --%>
+<%-- <div class="logo_div">
+            <a href="main"><img src="/image/logo/shop_logo.jpg" width="100%"></a>
+        </div>
+        <div class="shop_btn">
+        	shop
+        </div>
+        <div>
+            <input type="search" placeholder="Please enter product">
+        </div>
+        <div class="login_div">
+        	<c:if test="${loginInfo == null }">
+            <div>
+                <a href="login">Login</a>
+            </div>
+            <div>
+                <a href="signup">Join</a>
+            </div>
+            </c:if>
+            <c:if test="${loginInfo != null }">
+            	<div>
+	                <a href="logout.do">로그아웃</a>
+	            </div>
+	            <div>
+	                <a href="mypage">마이페이지</a>
+	            </div>
+            </c:if>
+        </div>
+        
+        
+        
+                <aside class="main_tab">
+            <details>
+                <summary>상의</summary>
+                <c:forEach var="productList" items="${productList }">
+	                <c:if test="${productList.product_type2 == 'top' }">
+	                	<div class="product_type">
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${productList.product_type }">
+			                	<input type="submit" value="${productList.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:if>
+            	</c:forEach>
+            </details>
+            <details>
+                <summary>하의</summary>
+                <c:forEach var="productList" items="${productList }">
+                	<c:if test="${productList.product_type2 == 'bottom' }">
+	                	<div class="product_type">
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${productList.product_type }">
+			                	<input type="submit" value="${productList.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:if>
+            	</c:forEach>
+            </details>
+            <details>
+                <summary>아우터</summary>
+                <c:forEach var="productList" items="${productList }">
+                	<c:if test="${productList.product_type2 == 'outer' }">
+	                	<div class="product_type">
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${productList.product_type }">
+			                	<input type="submit" value="${productList.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:if>
+            	</c:forEach>
+            </details>
+            <details>
+                <summary>신발</summary>
+                <c:forEach var="productList" items="${productList }">
+                	<c:if test="${productList.product_type2 == 'shose' }">
+	                	<div class="product_type">
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${productList.product_type }">
+			                	<input type="submit" value="${productList.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:if>
+            	</c:forEach>
+            </details>
+            <details>
+                <summary>기타</summary>
+                <c:forEach var="productList" items="${productList }">
+               		<c:if test="${productList.product_type2 == 'etc' }">
+	                	<div class="product_type">
+			                <form action="product">
+			                	<input type="hidden" name="product_type" value="${productList.product_type }">
+			                	<input type="submit" value="${productList.product_type }">
+			            	</form>
+		            	</div>
+	            	</c:if>
+           	 	</c:forEach>
+            </details>
+           
+        </aside> --%>

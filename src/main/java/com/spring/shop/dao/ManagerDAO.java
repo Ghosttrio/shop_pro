@@ -25,6 +25,12 @@ public class ManagerDAO {
 		return selectProduct;
 	}
 	
+	/*
+	 * public List selectProduct2() { List selectProduct =
+	 * sqlSession.selectList("mapper.manager.selectProduct2"); return selectProduct;
+	 * }
+	 */
+	
 	public List selectProduct(String product_code) {
 		List selectProduct =  sqlSession.selectList("mapper.manager.selectProduct_product", product_code);
 		return selectProduct;
@@ -36,8 +42,16 @@ public class ManagerDAO {
 		return selectReview;
 	}
 	
+//	제품랭킹
+	public List product_ranking() {
+		List product_ranking =  sqlSession.selectList("mapper.manager.product_ranking");
+		return product_ranking;
+	}
 	
-	
+	public List selectProduct_type() { 
+		List selectProduct = sqlSession.selectList("mapper.manager.selectProduct_type_all");
+		return selectProduct; 
+	}
 	
 	public int selectProduct_type(String product_type) { 
 		int selectProduct = sqlSession.selectOne("mapper.manager.selectProduct_type", product_type);

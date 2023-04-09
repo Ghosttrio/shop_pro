@@ -19,7 +19,7 @@ public class ManagerDTO {
 	private String product_explain;
 	private String product_image;
 	private String product_type;
-
+	private String product_type2;
 	
 	private int section;
 	private int pageNum;

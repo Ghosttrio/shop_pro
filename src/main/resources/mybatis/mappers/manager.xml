@@ -21,6 +21,21 @@
 		]]>
 	</select>
 	
+	<!-- 제품별 평점 랭킹 -->
+	<select id="product_ranking" resultType="managerDTO">
+		<![CDATA[
+			SELECT review_productId, avg(review_rate) 
+			FROM review GROUP BY review_productId
+		]]>
+	</select>
+	
+	
+	<select id="selectProduct_type_all" resultType="managerDTO">
+		<![CDATA[
+			SELECT DISTINCT product_type FROM product
+		]]>
+	</select>
+	
 	<select id="selectProduct_product" parameterType="String" resultType="managerDTO">
 		<![CDATA[
 			select * from product where product_code = #{product_code}

@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/spring/shop/controller/SearchController.java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/static/css/common/header.css=UTF-8
 encoding//src/main/resources/static/css/main/main.css=UTF-8
 encoding//src/main/resources/static/css/product/info.css=UTF-8
 encoding//src/test/java=UTF-8

@@ -3,6 +3,7 @@ package com.spring.shop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -68,10 +69,18 @@ public class LoginController {
 			System.out.println("로그인실행");
 			session.setAttribute("id", id);
 			String sessionId = (String) session.getAttribute("id");
+			System.out.println(sessionId);
 			model.addAttribute("loginInfo", sessionId);
-			return "main/main";
+			return "redirect:/main";
 		}
 		
+	}
+	
+//	로그아웃
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
 	}
 	
 }
