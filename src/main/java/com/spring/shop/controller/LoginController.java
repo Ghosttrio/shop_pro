@@ -1,11 +1,14 @@
 package com.spring.shop.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.shop.dto.LoginDTO;
 import com.spring.shop.service.LoginService;
@@ -63,14 +66,11 @@ public class LoginController {
 //		널값이면 다시입력 출력 아니면 로그인
 		if(dto==null) {
 			System.out.println("로그인실패");
-			model.addAttribute("loginInfo", null);
-			return "redirect:/login";
+			model.addAttribute("message", "error");
+			return "login/login";
 		} else {
 			System.out.println("로그인실행");
 			session.setAttribute("id", id);
-			String sessionId = (String) session.getAttribute("id");
-			System.out.println(sessionId);
-			model.addAttribute("loginInfo", sessionId);
 			return "redirect:/main";
 		}
 		
@@ -82,5 +82,15 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	
+//	중복체크
+	
+    @GetMapping("/idCheck.do")
+    @ResponseBody
+    public List idCheck() {
+    	List idCheck = loginService.idCheck();
+        return idCheck;
+    }
+
 	
 }

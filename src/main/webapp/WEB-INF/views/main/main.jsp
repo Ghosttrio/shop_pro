@@ -15,141 +15,36 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <section>
         <article class="main_article">
+        	<article class="main_review">
+                <h2>LookBook</h2>
+                <img src="/image/content/lookbook1.jpg" width="100%">
+            </article>
             <article class="main_ranking">
-            	<h3>Ranking</h3>
+            	<h2>Ranking</h2>
             	<div>
-            		<c:forEach var="ranking" items="${product_ranking }" varStatus="status">
+            		<c:forEach var="ranking" items="${product_ranking }" varStatus="status" begin="0" end="4">
             			<c:forEach var="productList_all" items="${productList_all }">
-            			<div style="display:inline-block;">
            					<c:if test="${productList_all.product_code == ranking.review_productId }">
-	           					<div style="border:1px solid black; width:200px; height:250px; ">
-	           						<div>${status.count }위</div>
+	           					<div class="ranking_box">
+	           						<h3>${status.count }위</h3>
 	           						<div>
-	           							${productList_all.product_name}
+	           							<img src="${productList_all.product_image}" width="100%" height="200px">
 	           						</div>
+	           						<div>
+	           							<div class="product_name">${productList_all.product_name}</div>
+	           						</div>
+	           						<form action="info">
+	           							<input type="hidden" name="product_code" value="${productList_all.product_code }">
+	           							<input class="order" type="submit" value="주문하기">
+	           						</form>
            						</div>
            					</c:if>
-            			</div>
             			</c:forEach>
             		</c:forEach>
             	</div>
             </article>
-            <article class="main_review">
-                <h3>LookBook</h3>
-            </article>
+            
         </article>
     </section>
 </body>
 </html>
-
-<%-- 
-<div>
-				    <c:forEach var="product_type" items="${product_type }">
-	                	<div>
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${product_type.product_type }">
-			                	<input type="submit" value="${product_type.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:forEach>
-			    </div>
-
- --%>
-<%-- <div class="logo_div">
-            <a href="main"><img src="/image/logo/shop_logo.jpg" width="100%"></a>
-        </div>
-        <div class="shop_btn">
-        	shop
-        </div>
-        <div>
-            <input type="search" placeholder="Please enter product">
-        </div>
-        <div class="login_div">
-        	<c:if test="${loginInfo == null }">
-            <div>
-                <a href="login">Login</a>
-            </div>
-            <div>
-                <a href="signup">Join</a>
-            </div>
-            </c:if>
-            <c:if test="${loginInfo != null }">
-            	<div>
-	                <a href="logout.do">로그아웃</a>
-	            </div>
-	            <div>
-	                <a href="mypage">마이페이지</a>
-	            </div>
-            </c:if>
-        </div>
-        
-        
-        
-                <aside class="main_tab">
-            <details>
-                <summary>상의</summary>
-                <c:forEach var="productList" items="${productList }">
-	                <c:if test="${productList.product_type2 == 'top' }">
-	                	<div class="product_type">
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${productList.product_type }">
-			                	<input type="submit" value="${productList.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:if>
-            	</c:forEach>
-            </details>
-            <details>
-                <summary>하의</summary>
-                <c:forEach var="productList" items="${productList }">
-                	<c:if test="${productList.product_type2 == 'bottom' }">
-	                	<div class="product_type">
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${productList.product_type }">
-			                	<input type="submit" value="${productList.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:if>
-            	</c:forEach>
-            </details>
-            <details>
-                <summary>아우터</summary>
-                <c:forEach var="productList" items="${productList }">
-                	<c:if test="${productList.product_type2 == 'outer' }">
-	                	<div class="product_type">
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${productList.product_type }">
-			                	<input type="submit" value="${productList.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:if>
-            	</c:forEach>
-            </details>
-            <details>
-                <summary>신발</summary>
-                <c:forEach var="productList" items="${productList }">
-                	<c:if test="${productList.product_type2 == 'shose' }">
-	                	<div class="product_type">
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${productList.product_type }">
-			                	<input type="submit" value="${productList.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:if>
-            	</c:forEach>
-            </details>
-            <details>
-                <summary>기타</summary>
-                <c:forEach var="productList" items="${productList }">
-               		<c:if test="${productList.product_type2 == 'etc' }">
-	                	<div class="product_type">
-			                <form action="product">
-			                	<input type="hidden" name="product_type" value="${productList.product_type }">
-			                	<input type="submit" value="${productList.product_type }">
-			            	</form>
-		            	</div>
-	            	</c:if>
-           	 	</c:forEach>
-            </details>
-           
-        </aside> --%>

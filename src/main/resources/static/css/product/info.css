@@ -1,128 +1,62 @@
-
-/* �긽�떒諛� */
-
-header {
-    border: 1px solid red;
-    height: 50px;
-    line-height: 50px;
-    margin-top: 10px;
-    padding: 10px;
+article{
+	font-size:20px;
+	
 }
-
-header > div {
-    display: inline-block;
-    font-size: 20px;
-    
+.product_image{
+	width:50%;
+	border:2px solid #eeeeee;
 }
-header > div > a {
-    text-decoration: none;
-    color: black;
+.product_image img{
+	width:100%;
 }
-
-/* 蹂몃Ц */
-section{
-    border: 1px solid red;
-    height: 800px;
-    font-size: 0;
-    
-    
+.product_info{
+	width:40%;
+	
 }
-section > *{
-    vertical-align: top;
-    border: 1px solid red;
-    display: inline-block;
-    
-}
-
-section > article {
-    /* border �궘�젣�썑 width:80%�쑝濡� �닔�젙 */
-    width: 79%;
-    height: 100%;
-}
-
-
-/* 蹂몃Ц�쁺�뿭1(�궗�씠�뱶, �꺆) */
-.main_tab{
-    font-size: 10px;   
-    width: 10%;
-    height: 100%;
-}
-
-
-/* 蹂몃Ц�쁺�뿭2(�옲�궧) */
-.main_ranking{
-    font-size: 10px;
-    width: 100%;
-    height: 50%;
-}
-
-/* 蹂몃Ц�쁺�뿭3(�썑湲�) */
-.main_review{
-    font-size: 10px;
-    width: 100%;
-    height: 50%;
-}
-
-
-
-/* 濡쒓퀬 諛뺤뒪 */
-.logo_div{
-    width: 100px;
-}
-
-/* 濡쒓렇�씤 諛뺤뒪 */
-.login_div{
-    float: right;
-}
-.login_div > div{
-    display: inline-block;
-}
-.login_div a {
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-/* �븘肄붾뵒�뼵 */
-details {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: .5em .5em 0;
-    margin-bottom: 1em;
-}
-summary {
-    font-weight: bold;
-    margin: -.5em -.5em 0;
-    padding: .5em;
-    cursor: pointer;
-}
-details[open] {
-    padding: .5em;
-}
-details[open] summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: .5em;
-    background-color: #fff0c0;
-    border-radius: 10px 10px 0 0;
-}
-
-
-/* �씠誘몄� �뒳�씪�씠�뱶 */
-
-
-
-
-
-/* 메인 아티클 */
-
-.main_article{
-	font-size:10px;
+.product_box > div{
+	display:inline-block;
+	vertical-align:top;
 	padding:20px;
 }
+.product_box > div > div{
+	border:1px solid red;
+}
+section{
+	margin-top:30px;
+	height: auto;
+}
+.product_content{
+	margin-top : 40px;
+}
 
 
-/* 제품 이름 */
 .product_name{
-	font-size:20px;
-	font-weight:600;
+	font-size:40px;
+	margin-bottom:20px;
+}
+
+
+.product_option{
+	margin-top:30px;
+	width:100%;
+	height:30px;
+}
+.product_rate{
+	margin-top:30px;
+}
+
+.product_cart{
+	margin-top:20px;
+	width:100%;
+	height:50px;
+}
+.product_pay{
+	margin-top:20px;
+	width:78%;
+	height:50px;
+}
+.product_heart{
+	margin-top:20px;
+	width:20%;
+	height:50px;
 }

@@ -20,7 +20,8 @@
 .main_review{
     font-size: 10px;
     width: 100%;
-    height: 50%;
+    height: 450px;
+    overflow:hidden;
 }
 
 
@@ -48,30 +49,6 @@
 
 
 
-
-/* �븘肄붾뵒�뼵 */
-details {
-    border: 1px solid #ccc;
-    padding: .5em .5em 0;
-    transition: all 2s;
-}
-summary {
-    font-weight: bold;
-    margin: -.5em -.5em 0;
-    padding: .5em;
-    cursor: pointer;
-    transition: all 2s;
-}
-details[open] {
-    padding: .5em;
-    
-}
-details[open] summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: .5em;
-    background-color: #fff0c0;
-}
-
 .product_type{
 	display:inline-block;
 	width:49%;
@@ -79,3 +56,28 @@ details[open] summary {
 
 /* �씠誘몄� �뒳�씪�씠�뱶 */
 
+
+
+.ranking_box{
+	padding:10px;
+	border:2px solid #eeeeee;
+	width:260px;
+	height:330px;
+	display:inline-block;
+	margin-left:10px;
+	vertical-align:top;
+	overflow:hidden;
+}
+
+.product_name{
+	font-size:15px;
+	margin-top:10px;
+	margin-left:10px;
+	font-weight:600;
+}
+
+.order{
+	margin-top:10px;
+	width:100%;
+	height:50px;
+}

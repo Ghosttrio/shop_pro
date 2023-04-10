@@ -1,22 +1,6 @@
 
 
-window.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('details').forEach(function(item){
-        item.addEventListener("toggle", event => {
-        let toggled = event.target;
-        if (toggled.attributes.open) {/* 열었으면 */
-          /* 나머지 다른 열린 아이템을 닫음 */
-          document.querySelectorAll('details[open]').forEach(function(opened){
-              if(toggled != opened) /* 현재 열려있는 요소가 아니면 */
-                opened.removeAttribute('open'); /* 열림 속성 삭제 */
-          });
-        }
-      })
-    });
-  });
-
-
-document.querySelector(".like_btn").addEventListener("click", function(){
+/*document.querySelector(".like_btn").addEventListener("click", function(){
   	 $.ajax({
 		    url: "like.do",
 		    type: "POST",
@@ -37,3 +21,54 @@ document.querySelector(".like_btn").addEventListener("click", function(){
 		  });
   })
 	
+*/
+
+window.onload = () =>{
+	
+
+	document.querySelector(".product_pay").addEventListener("click", function(){
+		let form = document.querySelector(".product_form");
+		
+		form.method="get";
+		form.action="order";
+		form.submit();
+	
+	})
+	
+	
+	document.querySelector(".up").addEventListener("click", function(){
+		document.querySelector(".option_amount").value = parseInt(document.querySelector(".option_amount").value) + 1;
+		document.querySelector(".price").value = parseInt(document.querySelector(".option_amount").value) *  parseInt(document.querySelector(".option_price").value);
+		
+	})
+	document.querySelector(".down").addEventListener("click", function(){
+		document.querySelector(".option_amount").value = parseInt(document.querySelector(".option_amount").value) - 1;
+		if(document.querySelector(".option_amount").value < 1){
+			alert("수량 1개 이하는 선택할 수 없습니다.")
+			document.querySelector(".option_amount").value = parseInt(document.querySelector(".option_amount").value) + 1;
+		}
+	
+	})
+	
+}
+
+function product_option(){
+	var option  = document.querySelector(".product_option");
+	var value = (option.options[option.selectedIndex].value);
+	var show = $(".option_show");
+	show.append("<div>"+value+"</div>");
+
+	
+};
+
+
+
+
+
+
+
+
+
+
+
+

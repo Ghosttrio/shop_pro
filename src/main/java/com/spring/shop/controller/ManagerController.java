@@ -22,9 +22,8 @@ public class ManagerController {
 	public String add(
 			@RequestParam("product_code") String product_code,
 			@RequestParam("product_name") String product_name,
-			@RequestParam("product_price") String product_price,
+			@RequestParam("product_price") int product_price,
 			@RequestParam("product_brand") String product_brand,
-			@RequestParam("product_option") String product_option,
 			@RequestParam("product_explain") String product_explain,
 			@RequestParam("product_image") String product_image,
 			@RequestParam("product_type") String product_type
@@ -33,8 +32,6 @@ public class ManagerController {
 		managerDTO.setProduct_code(product_code);
 		managerDTO.setProduct_name(product_name);
 		managerDTO.setProduct_price(product_price);
-		managerDTO.setProduct_brand(product_brand);
-		managerDTO.setProduct_option(product_option);
 		managerDTO.setProduct_explain(product_explain);
 		managerDTO.setProduct_image(product_image);
 		managerDTO.setProduct_type(product_type);
@@ -63,9 +60,7 @@ public class ManagerController {
 	public String update(
 			@RequestParam("product_code") String product_code,
 			@RequestParam("product_name") String product_name,
-			@RequestParam("product_price") String product_price,
-			@RequestParam("product_brand") String product_brand,
-			@RequestParam("product_option") String product_option,
+			@RequestParam("product_price") int product_price,
 			@RequestParam("product_explain") String product_explain,
 			@RequestParam("product_image") String product_image,
 			@RequestParam("product_type") String product_type
@@ -74,8 +69,6 @@ public class ManagerController {
 		managerDTO.setProduct_code(product_code);
 		managerDTO.setProduct_name(product_name);
 		managerDTO.setProduct_price(product_price);
-		managerDTO.setProduct_brand(product_brand);
-		managerDTO.setProduct_option(product_option);
 		managerDTO.setProduct_explain(product_explain);
 		managerDTO.setProduct_image(product_image);
 		managerDTO.setProduct_type(product_type);

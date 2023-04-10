@@ -98,8 +98,10 @@ public class MainController {
 
 //	마이페이지(계정마다 출력)
 	@GetMapping("/mypage")
-	public String mypage(){
+	public String mypage(Model model, HttpSession session){
 		System.out.println("마이페이지 출력");
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
 		return "mypage/mypage";
 	}
 	
@@ -114,13 +116,14 @@ public class MainController {
 	
 //	제품리스트(제품카테고리마다 출력)
 	@GetMapping("/product")
-	public String product(Model model,
+	public String product(Model model, HttpSession session,
 			@RequestParam("product_type") String product_type,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum
 			){
 		System.out.println("카테고리 : " + product_type + "출력");
-		
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
 		
 //		페이징
 		int section_ = Integer.parseInt(((section==null) ? "1" : section));
@@ -171,12 +174,14 @@ public class MainController {
 	
 //	제품상세(제품마다출력)
 	@GetMapping("/info")
-	public String info(Model model,
+	public String info(Model model, HttpSession session,
 			@RequestParam("product_code") String product_code,
 //			리뷰페이징용 페이징 넘버
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum
 			){
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
 		System.out.println("코드번호 : " + product_code + " 제품상세 출력");
 		List productList = managerService.selectProduct(product_code);
 		model.addAttribute("productList",productList);
@@ -198,9 +203,32 @@ public class MainController {
 	
 //	주문창
 	@GetMapping("/order")
-	public String order(){
+	public String order(Model model, HttpSession session){
 		System.out.println("결제창출력");
-		
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
 		return "pay/order";
+	}
+	
+	
+//	결제완료창
+	@GetMapping("/complete")
+	public String complete(Model model, HttpSession session){
+		System.out.println("결제완료창 출력");
+		return "pay/complete";
+	}
+	
+//	결제실패창
+	@GetMapping("/fail")
+	public String fail(Model model, HttpSession session){
+		System.out.println("결제실패창 출력");
+		return "pay/fail";
+	}
+	
+//	결제취소창
+	@GetMapping("/cancel")
+	public String cancel(Model model, HttpSession session){
+		System.out.println("결제취소창 출력");
+		return "pay/cancel";
 	}
 }

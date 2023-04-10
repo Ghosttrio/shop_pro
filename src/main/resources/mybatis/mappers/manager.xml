@@ -10,7 +10,7 @@
 		<![CDATA[
 			insert into product 
 			values(#{product_code}, #{product_name}, #{product_price}, 
-			#{product_brand}, #{product_option}, #{product_explain}, 
+			 #{product_explain}, 
 			#{product_image}, #{product_type})
 		]]>
 	</insert>
@@ -59,8 +59,8 @@
 		<![CDATA[
 			update product 
 			set product_code = #{product_code}, product_name = #{product_name}, 
-				product_price = #{product_price}, product_brand = #{product_brand}, 
-				product_option = #{product_option}, product_explain = #{product_explain}, 
+				product_price = #{product_price},
+				product_explain = #{product_explain}, 
 				product_image = #{product_image}, product_type = #{product_type}
 			where product_code = #{product_code}
 		]]>
@@ -78,7 +78,7 @@
 		<![CDATA[
 		SELECT * FROM (
 			SELECT rownum AS rn, product_code, PRODUCT_NAME, product_image, product_price, 
-					product_brand, product_option, product_explain, product_type  
+					product_explain, product_type  
 			FROM product 
 			WHERE product_type = #{product_type}
 		) 

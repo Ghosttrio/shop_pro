@@ -18,4 +18,49 @@
 			select * from account where id = #{id} and pw = #{pw}
 		]]>
 	</select>
+	
+	<!-- 로그인 -->
+	<select id="idCheck" resultType="loginDTO">
+		<![CDATA[
+			select id from account
+		]]>
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<select id="selectId" parameterType="String" resultType="loginDTO">
+		<![CDATA[
+			select * from account where id = #{id}
+		]]>
+	</select>
+	
+	
+	<update	id="updateMember" parameterType="loginDTO">
+		<![CDATA[
+			update account set pw = #{pw}, name=#{name}, nickname=#{nickname}, addr=#{addr}
+		]]>
+	</update>
+	
+	<!-- 주문내역조회 -->
+	<select id="order_list" parameterType="String" resultType="loginDTO">
+		<![CDATA[
+			select * from order_info where order_account_id = #{id}
+		]]>
+	</select>
+	
+		<!-- 리뷰작성 내역조회 -->
+	<select id="review_list" parameterType="String" resultType="loginDTO">
+		<![CDATA[
+			select * from review where review_userId = #{id}
+		]]>
+	</select>
+	
+		<!-- 장바구니 조회 -->
+	<select id="cart_list" parameterType="String" resultType="loginDTO">
+		<![CDATA[
+			select * from cart where cart_userId = #{id}
+		]]>
+	</select>
+	
+	
+	
 </mapper>

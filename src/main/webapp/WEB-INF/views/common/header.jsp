@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common/header.css" type="text/css">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script type="text/javascript" src="/js/common/header.js"></script>
 </head>
@@ -40,7 +39,7 @@
 			    <div>
 			    	<form action="product">
 			    		<input type="submit" value="신발">
-				    	<input type="hidden" name="product_type" value="shoes">
+				    	<input type="hidden" name="product_type" value="shose">
 			    	</form>
 			    </div>
 			    <div>

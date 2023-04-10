@@ -6,43 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="/css/main/main.css" type="text/css">
-<style>
-	.test{
-		border:1px solid red;
-		width:100px;
-		height:100px;
-	}
-</style>
+<link rel="stylesheet" href="/css/product/product.css" type="text/css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <section>
         <article class="main_article">
             제품리스트
+            <div class="flexbox">
 				<c:forEach var="productList" items="${productList }">
-					<div class="test">
-						제품이름 : ${productList.product_name }<br>
-						제품타입 : ${productList.product_type }<br>
-						제품코드 : ${productList.product_code }<br>
+					<div class="productbox">
+						<div>
+							<img src="${productList.product_image}" width="100%" height="300px">
+						</div>
+						<div>
+							<div class="product_name">${productList.product_name}</div>
+						</div>
 						<form action="info">
-						<!-- forEach 해서 product_code 하나씩 출력하게 만들기 -->
-					     	<input type="hidden" name="product_code" value="${productList.product_code }">
-					      	<input type="submit" value="이동">
-					   	</form>
-				   	</div>
+							<input type="hidden" name="product_code" value="${productList.product_code }">
+							<input class="order" type="submit" value="주문하기">
+						</form>
+					</div>
 				</c:forEach>
-				
-				
-				<!-- 
-					페이징 할 때 불러올 것들
-					1. 카테고리별 전체 제품 개수
-					2. 섹션(10단위)과 페이지번호
-					3. 페이지 번호 클릭시 product_type 보내서 다시 같은 카테고리로 오게 만들기 
-				 -->
-				
-				<!-- 페이징 -->
-					<div id="paging" style="height:100px">
+		 	</div>
+					<div id="paging" style="height:50px">
 						<c:if test="${mapNum.total_product != null }">
 							<c:choose>
 								<c:when test="${mapNum.total_product > 100 }">

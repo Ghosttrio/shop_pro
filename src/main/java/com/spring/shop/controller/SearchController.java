@@ -20,5 +20,6 @@ public class SearchController {
     	List productList = managerService.selectProduct();
         return productList;
     }
+    
 
 }
