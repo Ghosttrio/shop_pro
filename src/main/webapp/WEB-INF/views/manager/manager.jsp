@@ -9,42 +9,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/manager/manager.css" type="text/css">
-   <!--  <script type="text/javascript" src="js/manager/manager.js"></script> -->
+    <link rel="stylesheet" href="/css/manager/manager.css" type="text/css">
+   	<script type="text/javascript" src="/js/manager/manager.js"></script>
 </head>
 <body>
     <div id="wrap">
-        <div>
-        	<form name="managerForm">
-				<input class="add" type="button" value="상품추가하기">
-			</form>
-        </div>
+    	<header>
+	    	<div>
+	    		관리자페이지
+	    	</div>
+	        <div>
+	        	<form name="managerForm">
+					<input class="add btn-7" type="button" value="상품추가하기">
+				</form>
+	        </div>
+        </header>
         
-        <div>
-        	<h1>출력</h1>
+        <section>
+        	<h2>상품목록</h2>
+        	<div class="type">상의</div>
+        	<div class="type_wrap">
+	        	<c:forEach var="productList" items="${productList }">
+	        		<c:if test="${productList.product_type == 'top' }">
+		        		<div class="product_wrap">
+		        			<img src="${productList.product_image }" width="100%" height="250px">
+			        		${productList.product_name }
+			        		<div class="btn_wrap">
+			        			<form action="update" method="get" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="수정"  >
+								</form>
+				        		<form action="delete.do" method="post" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="삭제" >
+								</form>
+							</div>
+						</div>
+					</c:if>
+	        	</c:forEach>
+        	</div>
         	
-        	<c:forEach var="productList" items="${productList }">
-        		${productList.product_name }
-        		<form action="delete.do" method="post" >
-        			<input type="hidden" name="product_code" value="${productList.product_code }">
-        			<input type="submit" value="삭제" >
-				</form>
-				<form action="update" method="get" >
-        			<input type="hidden" name="product_code" value="${productList.product_code }">
-        			<input type="submit" value="수정"  >
-				</form>
-        	</c:forEach>
-        </div>
-        
-        
+        	<div class="type">하의</div>
+        	<div class="type_wrap">
+	        	<c:forEach var="productList" items="${productList }">
+	        		<c:if test="${productList.product_type == 'bottom' }">
+		        		<div class="product_wrap">
+		        			<img src="${productList.product_image }" width="100%" height="250px">
+			        		${productList.product_name }
+			        		<div class="btn_wrap">
+				        		<form action="update" method="get" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="수정"  >
+								</form>
+				        		<form action="delete.do" method="post" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="삭제" >
+								</form>
+							</div>
+						</div>
+					</c:if>
+	        	</c:forEach>
+        	</div>
+        	
+        	<div class="type">아우터</div>
+        	<div class="type_wrap">
+	        	<c:forEach var="productList" items="${productList }">
+	        		<c:if test="${productList.product_type == 'outer' }">
+		        		<div class="product_wrap">
+		        			<img src="${productList.product_image }" width="100%" height="250px">
+			        		${productList.product_name }
+			        		<div class="btn_wrap">
+				        		<form action="update" method="get" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="수정"  >
+								</form>
+				        		<form action="delete.do" method="post" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="삭제" >
+								</form>
+							</div>
+						</div>
+					</c:if>
+	        	</c:forEach>
+        	</div>
+        	
+        	
+        	<div class="type">신발</div>
+        	<div class="type_wrap">
+	        	<c:forEach var="productList" items="${productList }">
+	        		<c:if test="${productList.product_type == 'shose' }">
+		        		<div class="product_wrap">
+		        			<img src="${productList.product_image }" width="100%" height="250px">
+			        		${productList.product_name }
+			        		<div class="btn_wrap">
+				        		<form action="update" method="get" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="수정"  >
+								</form>
+				        		<form action="delete.do" method="post" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="삭제" >
+								</form>
+							</div>
+						</div>
+					</c:if>
+	        	</c:forEach>
+        	</div>
+        	
+        	
+        	<div class="type">기타</div>
+        	<div class="type_wrap">
+	        	<c:forEach var="productList" items="${productList }">
+	        		<c:if test="${productList.product_type == 'etc' }">
+		        		<div class="product_wrap">
+		        			<img src="${productList.product_image }" width="100%" height="250px">
+			        		${productList.product_name }
+			        		<div class="btn_wrap">
+				        		<form action="update" method="get" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="수정"  >
+								</form>
+				        		<form action="delete.do" method="post" >
+				        			<input type="hidden" name="product_code" value="${productList.product_code }">
+				        			<input class="btn-5" type="submit" value="삭제" >
+								</form>
+							</div>
+						</div>
+					</c:if>
+	        	</c:forEach>
+        	</div>
+        </section>
     </div>
 </body>
-<script>
-document.querySelector(".add").addEventListener("click",function(){
-	let managerForm = document.managerForm
-	managerForm.action="/add";
-	managerForm.method="get";
-	managerForm.submit();
-});
-</script>
 </html>

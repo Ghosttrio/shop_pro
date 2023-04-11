@@ -23,7 +23,6 @@ public class ManagerController {
 			@RequestParam("product_code") String product_code,
 			@RequestParam("product_name") String product_name,
 			@RequestParam("product_price") int product_price,
-			@RequestParam("product_brand") String product_brand,
 			@RequestParam("product_explain") String product_explain,
 			@RequestParam("product_image") String product_image,
 			@RequestParam("product_type") String product_type

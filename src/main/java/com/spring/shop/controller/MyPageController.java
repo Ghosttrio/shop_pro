@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.shop.dto.LoginDTO;
 import com.spring.shop.service.LoginService;
+import com.spring.shop.service.ManagerService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,7 +21,8 @@ public class MyPageController {
 	
 	@Autowired
 	public LoginService loginService;
-	
+	@Autowired
+	public ManagerService managerService;
 	@Autowired
 	public LoginDTO loginDTO;
 	
@@ -72,6 +74,8 @@ public class MyPageController {
 	public String order_list(Model model, HttpSession session,
 			@RequestParam("id") String id) {
 		System.out.println("주문내역 출력");
+		List productList = managerService.selectProduct();
+		model.addAttribute("productList",productList);
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
 		List orderInfo = loginService.order_list(id);
@@ -89,6 +93,8 @@ public class MyPageController {
 	public String review_list(Model model, HttpSession session,
 			@RequestParam("id") String id) {
 		System.out.println("주문내역 출력");
+		List productList = managerService.selectProduct();
+		model.addAttribute("productList",productList);
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
 		
@@ -133,6 +139,8 @@ public class MyPageController {
 	public String cart_list(Model model, HttpSession session,
 			@RequestParam("id") String id) {
 		System.out.println("장바구니 출력");
+		List productList = managerService.selectProduct();
+		model.addAttribute("productList",productList);
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
 		

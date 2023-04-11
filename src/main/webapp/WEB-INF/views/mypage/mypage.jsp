@@ -17,22 +17,10 @@
 		<article class="top">
 			<div class="left">
 				<div>
-					<img src="https://image.msscdn.net/mfile_s01/_simbols/_basic/etc.png">
-				</div>
-				<div>
-					닉네임
-				</div>
-				<div>
-					가입일
+					${loginInfo }님의 마이페이지
 				</div>
 			</div>
-			<div class="rigth">
-				<div>
-					<form action="account_update">
-						<input type="hidden" name="id" value="${loginInfo }">
-						<input type="submit" value="회원정보변경">
-					</form>
-				</div>
+			<div class="right">
 				<div>
 					<form action="order_list">
 						<!-- 아이디에 맞는 정보 셀렉트 -->
@@ -53,22 +41,21 @@
 						<input type="hidden" name="id" value="${loginInfo }">
 						<input type="submit" value="장바구니상품">
 					</form>
-					
+				</div>
+				<div>
+					<form action="account_update">
+						<input type="hidden" name="id" value="${loginInfo }">
+						<input type="submit" value="회원정보변경">
+					</form>
 				</div>
 			</div>
-			
-			
 		</article>
 		
 		<article class="bottom">
 			<c:choose>
-			
-			
 				<c:when test="${(userInfo == null) and (orderInfo == null) and (reviewInfo == null) and (cartInfo == null)}">
-					출력공간
+					<div class="none_content">${loginInfo }님의 마이페이지입니다.</div>
 				</c:when>
-				
-				
 				<c:when test="${userInfo != null}">
 					<h3>회원정보수정</h3>
 					<c:forEach var="userInfo" items="${userInfo }">
@@ -78,7 +65,6 @@
 							<input type="text" name="name" value="${userInfo.name }">
 							<input type="text" name="nickname" value="${userInfo.nickname }">
 							<input type="text" name="email" value="${userInfo.email }">
-							<input type="text" name="addr" value="${userInfo.addr }">
 							<input type="submit" value="제출">
 						</form>
 					</c:forEach>
@@ -88,7 +74,18 @@
 				<c:when test="${orderInfo != null}">
 					<h3>주문내역</h3>
 					<c:forEach var="orderInfo" items="${orderInfo }">
-						${orderInfo.order_id }
+						<c:forEach var="productList" items="${productList }">
+							<c:if test="${productList.product_code == orderInfo.order_product_id }">
+								<img src="${productList.product_image }" width="100px">
+								제품명 : ${productList.product_name }
+								주문코드 : ${orderInfo.order_id }
+								사이즈 : ${orderInfo.order_size }
+								수량 : ${orderInfo.order_num }
+								총 금액 : ${orderInfo.order_price }
+								배송지 : ${orderInfo.order_addr }
+							</c:if>
+						</c:forEach>
+						
 					</c:forEach>
 				</c:when>
 				
@@ -96,7 +93,14 @@
 				<c:when test="${reviewInfo != null}">
 					<h3>작성한구매후기</h3>
 					<c:forEach var="reviewInfo" items="${reviewInfo }">
-						${reviewInfo.review_productId }
+						<c:forEach var="productList" items="${productList }">
+							<c:if test="${productList.product_code == reviewInfo.review_productId }">
+								<img src="${productList.product_image }" width="100px">
+								제품명 : ${productList.product_name }
+								작성내용 : ${reviewInfo.review_content }
+								작성평점 : ${reviewInfo.review_rate }	
+							</c:if>
+						</c:forEach>
 					</c:forEach>
 				</c:when>
 				
@@ -104,7 +108,18 @@
 				<c:when test="${cartInfo != null}">
 					<h3>장바구니</h3>
 					<c:forEach var="cartInfo" items="${cartInfo }">
-						${cartInfo.cart_productId }
+						<c:forEach var="productList" items="${productList }">
+							<c:if test="${productList.product_code == cartInfo.cart_productId }">
+								<img src="${productList.product_image }" width="100px">
+								제품명 : ${productList.product_name }
+								장바구니코드 : ${cartInfo.cart_id }
+								<form action="info">
+									<input type="hidden" name="product_code" value="${productList.product_code}">
+									<input type="submit" value="주문하러가기">
+								</form>
+							</c:if>
+					
+						</c:forEach>
 					</c:forEach>
 				</c:when>
 				

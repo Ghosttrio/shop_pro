@@ -67,4 +67,10 @@
 			insert into cart values(#{cart_id}, #{cart_userId}, #{cart_productId})
 		]]>
 	</insert>
+	
+	<insert id="insertCart" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into order_info values(#{id}, #{cart_userId}, #{cart_productId})
+		]]>
+	</insert>
 </mapper>

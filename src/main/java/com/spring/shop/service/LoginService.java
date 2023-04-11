@@ -1,6 +1,7 @@
 package com.spring.shop.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,7 +70,9 @@ public class LoginService {
 	public void insertCart(LoginDTO loginDTO) {
 		loginDAO.insertCart(loginDTO);
 	}
-	
+	public void insert_order(Map map) {
+		loginDAO.insert_order(map);
+	}
 	
 	
 }

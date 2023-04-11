@@ -1,6 +1,7 @@
 package com.spring.shop.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,11 @@ public class LoginDAO {
 	}
 	
 	public void insertCart(LoginDTO loginDTO) {
-		sqlSession.selectList("mapper.login.insertCart", loginDTO);
+		sqlSession.insert("mapper.login.insertCart", loginDTO);
+	}
+	
+	public void insert_order(Map map) {
+		sqlSession.insert("mapper.login.insert_order", map);
 	}
 	
 	

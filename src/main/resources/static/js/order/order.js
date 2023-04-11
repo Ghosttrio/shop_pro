@@ -3,10 +3,11 @@
 	  window.onload = () => {
 		  document.querySelector("#pay").addEventListener("click", function () {
             send2();
+           
 			})
 			document.querySelector("#post_btn").addEventListener("click", function () {
-	            	execDaumPostcode();
-	    		})
+            	execDaumPostcode();
+    		})	
 	  }
         
 

@@ -109,6 +109,7 @@ public class MainController {
 		System.out.println("마이페이지 출력");
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
+		
 		return "mypage/mypage";
 	}
 	
@@ -264,16 +265,35 @@ public class MainController {
 //	결제완료창
     @RequestMapping("/complete")
 	public String complete(Model model, HttpSession session,
-			@RequestParam Map<String, Object> map){
-		System.out.println("결제완료창 출력");
-		String sessionId = (String) session.getAttribute("id");
-		model.addAttribute("loginInfo", sessionId);
-		model.addAttribute("result", map);
+			@RequestParam Map<String, Object> map,
+			@RequestParam(value="command", required=false) String command,
+			@RequestParam(value="id", required=false) String id
+			){
 		
-		List productList = managerService.selectProduct(map.get("product_code").toString());
-		model.addAttribute("productList",productList);
+		if(command==null) {
+			System.out.println("결제완료창 출력");
+			String sessionId = (String) session.getAttribute("id");
+			model.addAttribute("loginInfo", sessionId);
+			model.addAttribute("result", map);
+			
+			List productList = managerService.selectProduct(map.get("product_code").toString());
+			model.addAttribute("productList",productList);
+			
+			return "pay/complete";
+		}else {
+			System.out.println("주문내역 출력");
+			String sessionId = (String) session.getAttribute("id");
+			model.addAttribute("loginInfo", sessionId);
+			model.addAttribute("result", map);
+			
+//			주문내역 테이블에 인서트하기
+			loginService.insert_order(map);
+			
+			List orderInfo = loginService.order_list(id);
+			model.addAttribute("orderInfo", orderInfo);
+			return "mypage/mypage";
+		}
 		
-		return "pay/complete";
 	}
 	
 	

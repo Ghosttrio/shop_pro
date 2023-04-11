@@ -26,60 +26,23 @@ header > div:nth-child(2){
 }
 
 section{
-	padding:10px;
 	width:100%;
-}
-
-h2{
-	font-size:25px;
-	font-weight:bold;
-	
-}
-
-.product_wrap{
-	width:15%;
 	border:1px solid black;
-	display:inline-block;
-	vertical-align:top;
+	font-size:20px;
 	padding:10px;
 }
 
-.type{
-	height:30px;
-	padding:5px;
+
+.btn_box {
 	margin-top:20px;
-	margin-bottom:5px;
-	font-size:20px;
-	font-weight:bold;
-	background-color:black;
-	color:white;
-	
+	width:270px;
 }
-
-
-
-
-
-
-
-.btn_wrap {
+.btn_box > input{
 	width:100%;
-}
-.btn_wrap form {
-	width:50%;
-	display:inline-block;
-	
-}
-.btn_wrap input {
-	width:100%;
-	cursor:pointer;
-	border:1px solid white;
 	height:30px;
+	display:inline-block; 
+	cursor:pointer;
 }
-
-
-
-
 /* 5 */
 .btn-5 {
   background: #000;
@@ -118,8 +81,6 @@ h2{
   width:100%;
   transition:800ms ease all;
 }
-
-
 
 
 /* 7 */
@@ -162,7 +123,7 @@ h2{
 
 
 .add{
-	width:100px;
+	width:120px;
 	height:40px;
 	background-color:white;
 	color:black;
