@@ -30,7 +30,7 @@ public class ManagerDTO {
 	private String review_userId;
 	private String review_content;
 	private int review_rate;
-	
+	private String review_productNickname;
 	
 	
 	

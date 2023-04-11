@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,17 +20,18 @@
 						<div>
 							<img src="${productList.product_image}" width="100%" height="300px">
 						</div>
-						<div>
+						<div class="product_info">
 							<div class="product_name">${productList.product_name}</div>
+							<div class="product_name"><fmt:formatNumber value="${productList.product_price }" pattern="#,###"/>원</div>
 						</div>
 						<form action="info">
 							<input type="hidden" name="product_code" value="${productList.product_code }">
-							<input class="order" type="submit" value="주문하기">
+							<input id="order" class="btn-7" type="submit" value="주문하기">
 						</form>
 					</div>
 				</c:forEach>
 		 	</div>
-					<div id="paging" style="height:50px">
+					<div id="paging" >
 						<c:if test="${mapNum.total_product != null }">
 							<c:choose>
 								<c:when test="${mapNum.total_product > 100 }">
@@ -40,7 +42,7 @@
 													<input type="hidden" name="product_type" value="${mapNum.product_type }">
 													<input type="hidden" name="section" value="${mapNum.section-1 }">
 													<input type="hidden" name="pageNum" value="${(mapNum.section-1)*10 }">
-													<input type="submit" value="pre">
+													<input class="btn-1" type="submit" value="pre">
 												</form>
 											</div>
 										</c:if>
@@ -49,7 +51,7 @@
 												<input type="hidden" name="product_type" value="${mapNum.product_type }">
 												<input type="hidden" name="section" value="${mapNum.section}">
 												<input type="hidden" name="pageNum" value="${page}">
-												<input type="submit" value="${(mapNum.section-1)*10 +page}">
+												<input class="btn-1" type="submit" value="${(mapNum.section-1)*10 +page}">
 											</form>
 										</div>
 										<c:if test="${page == 10 }">
@@ -57,7 +59,7 @@
 												<input type="hidden" name="product_type" value="${mapNum.product_type }">
 												<input type="hidden" name="section" value="${mapNum.section+1 }">
 												<input type="hidden" name="pageNum" value="${mapNum.section*10+1}">
-												<input type="submit" value="next">
+												<input class="btn-1" type="submit" value="next">
 											</form>
 										</c:if>
 									</c:forEach>
@@ -76,7 +78,7 @@
 														<input type="hidden" name="product_type" value="${mapNum.product_type }">
 														<input type="hidden" name="section" value="${mapNum.section}">
 														<input type="hidden" name="pageNum" value="${page }">
-														<input type="submit" value="${page }">
+														<input class="btn-1" type="submit" value="${page }">
 													</form>
 												</div>
 											</c:when>
@@ -86,7 +88,7 @@
 														<input type="hidden" name="product_type" value="${mapNum.product_type }">
 														<input type="hidden" name="section" value="${mapNum.section}">
 														<input type="hidden" name="pageNum" value="${page }">
-														<input type="submit" value="${page }">
+														<input class="btn-1" type="submit" value="${page }">
 													</form>
 												</div>
 											</c:otherwise>

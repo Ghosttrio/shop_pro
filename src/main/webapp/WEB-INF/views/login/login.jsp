@@ -10,6 +10,7 @@
     <title>ChangShop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/login/login.css" type="text/css">
+    <link rel="stylesheet" href="/css/login/slide.css" type="text/css">
     <script type="text/javascript" src="/js/login/login.js"></script>
 </head>
 <body>
@@ -33,7 +34,40 @@
 	        <div class="btn_wrap">
 	        	<input class="btn btn-success" type="submit" value="로그인">
 	        </div>
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        <div>
+	        
+		        <div class="wrapper">
+			        <div class="container">
+			            <ul class="slider">
+			                <li class="item"><img src="/image/content/lookbook1.jpg" width="100%"></li>
+			                <li class="item"><img src="/image/content/lookbook2.jpg" width="100%"></li>
+			                <li class="item"><img src="/image/content/lookbook3.jpg" width="100%"></li>
+			            </ul>
+			        </div>
+			    </div>
+		   
+	        
+	        
+	        
+	        </div>
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    </div>
 	</form>
 </body>
+<script src="/js/login/slide.js"></script>
 </html>

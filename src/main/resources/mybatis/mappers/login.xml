@@ -8,7 +8,7 @@
 	<!-- 회원가입 -->
 	<insert id="signup" parameterType="loginDTO">
 		<![CDATA[
-			insert into account(id, pw, name, email, addr) values(#{id}, #{pw}, #{name}, #{email}, #{addr})
+			insert into account(id, pw, name, email, addr) values(#{id}, #{pw}, #{name}, #{email}, #{addr}, #{phone})
 		]]>
 	</insert>
 	
@@ -36,7 +36,7 @@
 	
 	<update	id="updateMember" parameterType="loginDTO">
 		<![CDATA[
-			update account set pw = #{pw}, name=#{name}, nickname=#{nickname}, addr=#{addr}
+			update account set pw = #{pw}, name=#{name}, nickname=#{nickname}, addr=#{addr}, phone=#{phone}
 		]]>
 	</update>
 	
@@ -62,5 +62,9 @@
 	</select>
 	
 	
-	
+	<insert id="insertCart" parameterType="loginDTO">
+		<![CDATA[
+			insert into cart values(#{cart_id}, #{cart_userId}, #{cart_productId})
+		]]>
+	</insert>
 </mapper>

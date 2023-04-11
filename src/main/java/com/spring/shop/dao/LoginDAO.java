@@ -59,5 +59,9 @@ public class LoginDAO {
 		return cart_list;
 	}
 	
+	public void insertCart(LoginDTO loginDTO) {
+		sqlSession.selectList("mapper.login.insertCart", loginDTO);
+	}
+	
 	
 }

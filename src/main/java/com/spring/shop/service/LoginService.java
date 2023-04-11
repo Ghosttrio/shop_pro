@@ -65,4 +65,11 @@ public class LoginService {
 		return cart_list;
 	}
 	
+	
+	public void insertCart(LoginDTO loginDTO) {
+		loginDAO.insertCart(loginDTO);
+	}
+	
+	
+	
 }

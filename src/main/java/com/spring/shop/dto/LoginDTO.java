@@ -16,6 +16,7 @@ public class LoginDTO {
 	private String nickname;
 	private String email;
 	private String addr;
+	private String phone;
 	
 	
 	private String order_id;
@@ -24,6 +25,7 @@ public class LoginDTO {
 	private String order_size;
 	private int order_num;
 	private String order_price;
+	private String order_addr;
 
 
 	private int review_num;
@@ -32,9 +34,13 @@ public class LoginDTO {
 	private String review_userId;
 	private String review_content;
 	private int review_rate;
+	private String review_productNickname;
 	
 	private String cart_id;
 	private String cart_userId;
 	private String cart_productId;
+	
+	
+	
 	
 }

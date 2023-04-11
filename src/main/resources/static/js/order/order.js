@@ -3,7 +3,10 @@
 	  window.onload = () => {
 		  document.querySelector("#pay").addEventListener("click", function () {
             send2();
-    		})
+			})
+			document.querySelector("#post_btn").addEventListener("click", function () {
+	            	execDaumPostcode();
+	    		})
 	  }
         
 
@@ -20,6 +23,22 @@
         }
 
         function send2() {
+			let id = document.querySelector("#id").value;
+			let nickname = document.querySelector("#nickname").value;
+			let order_name = document.querySelector("#order_name").value;
+			let product_code = document.querySelector("#product_code").value;
+			let total_price = document.querySelector("#total_price").value;
+			let product_num = document.querySelector("#product_num").value;
+			let size = document.querySelector("#size").value;
+			
+			
+			let postcode = document.querySelector("#postcode").value;
+			let road_addr = document.querySelector("#road_addr").value;
+			let jibunAddress = document.querySelector("#jibunAddress").value;
+			let detail_addr = document.querySelector("#detail_addr").value;
+			
+			
+			
             let admin_key = "38ecf9e47f19a06625aadf9750c9ea14";
             let auth = "KakaoAK " + admin_key;
             let _data = {
@@ -31,7 +50,7 @@
                 quantity: 2, //수량
                 total_amount: 10000, //가격
                 tax_free_amount: 0, //비과세영역
-                approval_url: "http://localhost:8090/complete", // 성공 url
+                approval_url: "http://localhost:8090/complete?id=" + id +"&order_name="+order_name+"&nickname=" + nickname+"&product_code="+product_code+"&total_price="+total_price+"&product_num="+product_num+"&size="+size+"&road_addr="+road_addr+"&postcode="+postcode+"&jibunAddress="+jibunAddress+"&detail_addr="+detail_addr+"", // 성공 url
                 cancel_url: "http://localhost:8090/cancel", // 취소 url
                 fail_url: "http://localhost:8090/fail", // 실패 url
                 install_month: "3" // 할부개월; 필수 아님
@@ -47,6 +66,7 @@
                 data: _data,
                 success: function (data) {
                     console.log(data)
+                    console.log(data.tid)
                     location.href = data.next_redirect_pc_url;
                 },
                 error: function (xhr) {
@@ -59,9 +79,8 @@
         
 /* 카카오 맵 */
         
-        
-            //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-    function sample4_execDaumPostcode() {
+            
+    function execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -86,16 +105,9 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-                
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("road_addr").value = roadAddr;
+                document.getElementById("jibunAddress").value = data.jibunAddress;
 
                 var guideTextBox = document.getElementById("guide");
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.

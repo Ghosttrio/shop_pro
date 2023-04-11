@@ -78,6 +78,18 @@ public class ManagerService {
 		return selectProduct;
 	}
 	
+	public int avg_rate(String product_code) {
+		int avg_rate = managerDAO.avg_rate(product_code);
+		return avg_rate;
+	}
+	
+	
+	
+	public int total_review(String product_code) { 
+		int total_review = managerDAO.total_review(product_code); 
+		return total_review; 
+	}
+	
 	
 	
 }

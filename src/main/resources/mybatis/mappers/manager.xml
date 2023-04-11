@@ -94,8 +94,8 @@
 	<select id="selectReview" resultType="managerDTO" parameterType="managerDTO">
          <![CDATA[
        		SELECT * FROM (
-			SELECT rownum AS rn, lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate
-			FROM (SELECT LEVEL AS lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate
+			SELECT rownum AS rn, lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate, review_productNickname
+			FROM (SELECT LEVEL AS lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate, review_productNickname
 					FROM review
 					START WITH review_parentNum=0
 					CONNECT BY NOCYCLE PRIOR review_num = review_parentNum
@@ -104,19 +104,20 @@
          ]]>
 	</select>
 	
-<!-- 	
-	전체 댓글 개수
-	<select id="tot" resultType="int" parameterType="java.util.HashMap">
+	
+	<select id="avg_rate" resultType="int" parameterType="String">
          <![CDATA[
-        	 SELECT count(*) FROM (
-				SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-				FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-					FROM COMMENT_1 
-					START WITH parentNO=0 
-					CONNECT BY NOCYCLE PRIOR commentNO = parentNO 
-					ORDER SIBLINGS BY commentNO DESC)) 
-			WHERE articleNO = #{articleNO} and lvl= 1 
+         	SELECT round(avg(review_rate),1) FROM review WHERE review_productid = #{product_code}
          ]]>
-	</select> -->
+	</select>
+	
+	<select id="total_review" resultType="int" parameterType="String">
+         <![CDATA[
+         	SELECT count(*) FROM review WHERE review_productid = #{product_code}
+         ]]>
+	</select>
+	
+	
+	
 	
 </mapper>

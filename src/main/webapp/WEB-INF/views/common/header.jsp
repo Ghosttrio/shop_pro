@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common/header.css" type="text/css">
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" ></script>
 <script type="text/javascript" src="/js/common/header.js"></script>
 </head>
 <body>

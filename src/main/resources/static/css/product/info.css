@@ -4,7 +4,6 @@ article{
 }
 .product_image{
 	width:50%;
-	border:2px solid #eeeeee;
 }
 .product_image img{
 	width:100%;
@@ -17,9 +16,6 @@ article{
 	display:inline-block;
 	vertical-align:top;
 	padding:20px;
-}
-.product_box > div > div{
-	border:1px solid red;
 }
 section{
 	margin-top:30px;
@@ -39,24 +35,135 @@ section{
 .product_option{
 	margin-top:30px;
 	width:100%;
-	height:30px;
+	height:40px;
 }
 .product_rate{
 	margin-top:30px;
 }
 
-.product_cart{
+#product_cart{
 	margin-top:20px;
 	width:100%;
 	height:50px;
+	cursor:pointer;
 }
-.product_pay{
+#product_pay{
 	margin-top:20px;
-	width:78%;
+	width:100%;
 	height:50px;
+	cursor:pointer;
 }
-.product_heart{
+
+#pay_alert{
 	margin-top:20px;
-	width:20%;
+	width:100%;
 	height:50px;
+	cursor:pointer;
+}
+
+#cart_alert{
+	margin-top:20px;
+	width:100%;
+	height:50px;
+	cursor:pointer;
+}
+
+
+
+#up, #down{
+	vertical-align:middle;
+	width:20px;
+	height:20px;
+	color:white;
+	cursor:pointer;
+}
+
+
+/* 5 */
+.btn-5 {
+  background: #000;
+  color: #fff;
+  padding: 0;
+  border: none;
+}
+.btn-5:hover {
+  background: transparent;
+  color: #000;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #000;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+.btn_open, .btn_close{
+	
+	width:100%;
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	cursor:pointer;
+}
+
+.showstep1{
+   max-height: 600px;
+   overflow: hidden;
+   margin-top:30px;
+}
+
+.content{
+    height: auto;
+    margin-top:20px;
+    border:2px solid #eeeeee;
+}
+.hide{
+    display: none;
+}
+
+
+
+/* 1 */
+.btn-1 {
+  transition: all 0.3s ease;
+  background-color:#000;
+  color:white;
+  cursor:pointer;
+}
+.btn-1:hover {
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+#paging{
+	margin-top:30px;
+	text-align:center;
+}
+#paging > div {
+	display: inline-block;
+	margin-right:5px;
 }

@@ -1,6 +1,7 @@
 package com.spring.shop.controller;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,8 @@ public class MyPageController {
 			@RequestParam("name") String name,
 			@RequestParam("nickname") String nickname,
 			@RequestParam("email") String email,
-			@RequestParam("addr") String addr
+			@RequestParam("addr") String addr,
+			@RequestParam("phone") String phone
 			) {
 		System.out.println("회원정보 수정 실행");
 		
@@ -56,6 +58,7 @@ public class MyPageController {
 		loginDTO.setName(name);
 		loginDTO.setNickname(nickname);
 		loginDTO.setAddr(addr);
+		loginDTO.setPhone(phone);
 		
 		loginService.updateMember(loginDTO);
 		
@@ -99,13 +102,37 @@ public class MyPageController {
 	
 	
 	
-	
+//	장바구니 입력
+	@PostMapping("/cart")
+	public String cart(Model model, HttpSession session,
+			@RequestParam("code") String product_code) {
+		System.out.println("장바구니 입력");
+		String sessionId = (String) session.getAttribute("id");
+		
+		int leftLimit = 97; // letter 'a'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 10;
+	    Random random = new Random();
+	    String generatedString = random.ints(leftLimit, rightLimit + 1)
+	                                   .limit(targetStringLength)
+	                                   .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	                                   .toString();
+	    System.out.println(generatedString);
+		
+		
+		loginDTO.setCart_id(generatedString);
+		loginDTO.setCart_userId(sessionId);
+		loginDTO.setCart_productId(product_code);
+		loginService.insertCart(loginDTO);
+		
+		return "redirect:/info?product_code="+product_code;
+	}
 	
 //	장바구니내역 출력
 	@GetMapping("/cart_list")
 	public String cart_list(Model model, HttpSession session,
 			@RequestParam("id") String id) {
-		System.out.println("주문내역 출력");
+		System.out.println("장바구니 출력");
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
 		

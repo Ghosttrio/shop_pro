@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.shop.dto.ManagerDTO;
+import com.spring.shop.service.LoginService;
 import com.spring.shop.service.ManagerService;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +23,10 @@ public class MainController {
 
 	@Autowired
 	public ManagerService managerService;
+	@Autowired
+	public LoginService loginService;
+	
+	
 	@Autowired
 	public ManagerDTO managerDTO;
 	
@@ -197,38 +204,82 @@ public class MainController {
 		List reviewList = managerService.selectReview(managerDTO);
 		model.addAttribute("reviewList",reviewList);
 		
+		
+		int avg_rate = managerService.avg_rate(product_code);
+		model.addAttribute("avg_rate", avg_rate);
+		
+		
+		
+		
+		
+		int total_review = managerService.total_review(product_code);
+		Map map = new HashMap();
+		map.put("total_review", total_review);
+		map.put("section", section_);
+		map.put("pageNum", pageNum_);
+		map.put("product_code", product_code);
+		model.addAttribute("mapNum", map);
+		
+		
+		
+		
+		
+		
+		
+		
 		return "product/info";
 	}
 	
 	
 //	주문창
 	@GetMapping("/order")
-	public String order(Model model, HttpSession session){
+	public String order(Model model, HttpSession session,
+			@RequestParam("code") String product_code,
+			@RequestParam("total_price") String total_price,
+			@RequestParam("product_num") String product_num,
+			@RequestParam("size") String size
+			){
 		System.out.println("결제창출력");
 		String sessionId = (String) session.getAttribute("id");
 		model.addAttribute("loginInfo", sessionId);
+		
+		
+		List productList = managerService.selectProduct(product_code);
+		model.addAttribute("productList", productList);
+		
+		
+		List userInfo = loginService.selectMembers(sessionId);
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("total_price", total_price);
+		model.addAttribute("product_num", product_num);
+		model.addAttribute("size", size);
+		
 		return "pay/order";
 	}
 	
 	
+	
+	
+	
 //	결제완료창
-	@GetMapping("/complete")
-	public String complete(Model model, HttpSession session){
+    @RequestMapping("/complete")
+	public String complete(Model model, HttpSession session,
+			@RequestParam Map<String, Object> map){
 		System.out.println("결제완료창 출력");
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
+		model.addAttribute("result", map);
+		
+		List productList = managerService.selectProduct(map.get("product_code").toString());
+		model.addAttribute("productList",productList);
+		
 		return "pay/complete";
 	}
 	
-//	결제실패창
-	@GetMapping("/fail")
-	public String fail(Model model, HttpSession session){
-		System.out.println("결제실패창 출력");
-		return "pay/fail";
-	}
 	
-//	결제취소창
-	@GetMapping("/cancel")
-	public String cancel(Model model, HttpSession session){
-		System.out.println("결제취소창 출력");
-		return "pay/cancel";
-	}
+	
+
+	
+	
+	
 }
