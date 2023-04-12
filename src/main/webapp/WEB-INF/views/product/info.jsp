@@ -86,26 +86,111 @@
 	        </c:forEach>
 	        <br>
 	        <br>
-	        <h3>Review</h3>
-	        <div>
-	        	<input type="text" value="닉네임">
-	        	<input type="text" value="후기를 입력하세요">
-	        	<input type="number" placeholder="평점">
-	        	<input type="button" value="후기작성">
+	        
+	        
+	        
+	        
+	        
+	        <div class="review_header">
+		        <div>Review</div>
+		        <div>
+		        
+		        
+	         		<c:if test="${loginInfo==null }">
+			        	<input id="review_alert" class="btn-5" type="submit" value="후기작성">
+			        </c:if>
+			        <c:if test="${loginInfo!=null }">
+			        	<form action="reviewForm">
+			        		<input id="review_alert" class="btn-5" type="hidden" value="후기작성">
+			        		<input name="code" type="hidden" value="${code }">
+			        		<input name="loginInfo" type="hidden" value="${loginInfo }">
+			        		<input class="btn-5" type="submit" value="후기작성">
+			        	</form>
+			        </c:if>
+		        </div>
 	        </div>
+	        
+	        
+	        
+	        
 	        <c:forEach var="reviewList" items="${reviewList }">
-	        	<div style="border:1px solid red">
-	        		댓글번호 : ${reviewList.review_num }
-      				평점 : ${reviewList.review_rate }
-      				닉네임 : ${reviewList.review_productNickname }
-      				댓글내용 : ${reviewList.review_content }
-	        	</div>
-	        	<div>
-	        		<input type="text" value="닉네임">
-		        	<input type="text" value="댓글내용">
-		        	<input type="button" value="댓글달기">
-	        	</div>
+	        	
+	        	
+      				<c:if test="${reviewList.review_parentNum == 0 }">
+	      				<div class="parent_review_wrap">
+	      					<div class="parent_review_wrap_id">작성자ID: ${reviewList.review_userId }</div>
+	      					<div class="parent_review_wrap_rate">후기평점: ${reviewList.review_rate }점</div>
+	      					<div class="parent_review_wrap_content">${reviewList.review_content }</div>
+	      					<div class="parent_review_wrap_btn">
+	      					<c:if test="${loginInfo!=null && (loginInfo == reviewList.review_userId)}">
+	      					<!-- 부모리뷰업데이트창 -->
+		      					<form action="reviewForm_update">
+		      						<input type="hidden" name="loginInfo" value="${loginInfo }">
+		      						<input type="hidden" name="code" value="${reviewList.review_productId }">
+		      						<input type="hidden" name="review_num" value="${reviewList.review_num }">
+			      					<input class="btn-5" type="submit" value="수정">
+		      					</form>
+		      					<form action="review_delete">
+		      						<input type="hidden" name="code" value="${reviewList.review_productId }">
+		      						<input type="hidden" name="review_num" value="${reviewList.review_num }">
+			     					<input class="btn-5" type="submit" value="삭제">
+		      					</form>
+	      					</c:if>
+	      					</div>
+      					</div>
+      					<div class="child_review_input">
+      					
+   							<form action="review.do">
+   								<input type="text" name="textarea" placeholder="대댓글을 입력하세요">
+   								<input type="hidden" name="command" value="child_review">
+   								<input type="hidden" name="loginInfo" value="${loginInfo }">
+   								<input type="hidden" name="code" value="${reviewList.review_productId }">
+   								<input type="hidden" name="review_parentNum" value="${reviewList.review_num}">
+   								
+   								
+   								<c:if test="${loginInfo==null }">
+	   								<div class="child_btn">
+							        	<input id="review_alert2" class="btn-5" type="button" value="후기작성">
+						        	</div>
+						        </c:if>
+						        <c:if test="${loginInfo!=null }">
+						        	<div class="child_btn">
+						        		<input id="review_alert2" class="btn-5" type="hidden" value="후기작성">
+							        	<input class="btn-5" type="submit" value="댓글달기">
+					        		</div>
+						        </c:if>
+   								
+   								
+					        	
+				        		
+				        		
+   							</form>
+			        	</div>
+      				</c:if>
+      				
+   					<c:if test="${reviewList.review_parentNum != 0 }">
+   						<div class="child_review_wrap">
+   							<div class="child_review_wrap_id">└ ${reviewList.review_userId }</div>
+	      					<div class="child_review_wrap_content">${reviewList.review_content }</div>
+	      					<div class="child_review_wrap_btn">
+		      					<form action="review_delete">
+		      						<input type="hidden" name="code" value="${reviewList.review_productId }">
+		      						<input type="hidden" name="review_num" value="${reviewList.review_num }">
+		      						 <c:if test="${loginInfo!=null && (loginInfo == reviewList.review_userId) }">
+			     						<input class="btn-5" type="submit" value="삭제">
+			     					</c:if>
+		      					</form>
+	      					</div>
+	      					
+   						</div>
+      				</c:if>
+      				
+	        	
 	        </c:forEach>
+	    	
+	    	
+	    	
+	    	
 	    	
 	    	
 	    	<!-- 페이징 -->

@@ -68,9 +68,47 @@
 		]]>
 	</insert>
 	
-	<insert id="insertCart" parameterType="java.util.HashMap">
+	<insert id="insert_order" parameterType="java.util.HashMap">
 		<![CDATA[
-			insert into order_info values(#{id}, #{cart_userId}, #{cart_productId})
+			insert into order_info(order_id, order_product_id, order_account_id, order_size, order_num, order_price, order_addr, detail_addr) 
+			values(#{order_id}, #{product_code}, #{id}, #{size},#{product_num},#{total_price},#{road_addr}, #{detail_addr})
 		]]>
 	</insert>
+	
+	
+		<!-- 리뷰번호 최댓값 -->
+	<select id="review_max" resultType="String">
+		<![CDATA[
+			SELECT max(review_num) FROM review
+		]]>
+	</select>
+	
+	<insert id="insertReview" parameterType="loginDTO">
+		<![CDATA[
+			insert into review values(#{review_max}, #{review_parentNum}, #{review_productId}, #{review_userId}, #{review_content}, #{review_rate})
+		]]>
+	</insert>
+	
+	
+	<delete id="reviewDelete" parameterType="int">
+		<![CDATA[
+			delete from review where review_num = #{reviewNum}
+		]]>
+	</delete>
+	
+	
+	<select id="selectReview_reviewNum" parameterType="int" resultType="loginDTO">
+		<![CDATA[
+			SELECT * FROM review where review_num = #{reviewNum}
+		]]>
+	</select>
+	<update	id="updateReview" parameterType="loginDTO">
+		<![CDATA[
+			update review 
+			set review_num =#{review_num}, review_parentNum = #{review_parentNum}, 
+			review_productId = #{review_productId}, review_userId = #{review_userId}, 
+			review_content = #{review_content}, review_rate = #{review_rate} where review_num =#{review_num}
+		]]>
+	</update>
+	
 </mapper>

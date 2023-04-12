@@ -94,8 +94,8 @@
 	<select id="selectReview" resultType="managerDTO" parameterType="managerDTO">
          <![CDATA[
        		SELECT * FROM (
-			SELECT rownum AS rn, lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate, review_productNickname
-			FROM (SELECT LEVEL AS lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate, review_productNickname
+			SELECT rownum AS rn, lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate
+			FROM (SELECT LEVEL AS lvl, review_num, review_parentNum, review_productId, review_userId, review_content, review_rate
 					FROM review
 					START WITH review_parentNum=0
 					CONNECT BY NOCYCLE PRIOR review_num = review_parentNum
@@ -105,7 +105,7 @@
 	</select>
 	
 	
-	<select id="avg_rate" resultType="int" parameterType="String">
+	<select id="avg_rate" resultType="String" parameterType="String">
          <![CDATA[
          	SELECT round(avg(review_rate),1) FROM review WHERE review_productid = #{product_code}
          ]]>

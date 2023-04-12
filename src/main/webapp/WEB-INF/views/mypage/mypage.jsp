@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,70 +58,116 @@
 					<div class="none_content">${loginInfo }님의 마이페이지입니다.</div>
 				</c:when>
 				<c:when test="${userInfo != null}">
-					<h3>회원정보수정</h3>
+					<div class="bottom_head">회원정보수정</div>
 					<c:forEach var="userInfo" items="${userInfo }">
 						<form action="account_update.do" method="post">
-							<input type="text" name="id" value="${userInfo.id }" readonly>
-							<input type="text" name="pw" value="${userInfo.pw }">
-							<input type="text" name="name" value="${userInfo.name }">
-							<input type="text" name="nickname" value="${userInfo.nickname }">
-							<input type="text" name="email" value="${userInfo.email }">
-							<input type="submit" value="제출">
+							아이디 : <input type="text" name="id" value="${userInfo.id }" readonly><br><br>
+							비밀번호 : <input type="password" name="pw" value="${userInfo.pw }"><br><br>
+							이름 : <input type="text" name="name" value="${userInfo.name }"><br><br>
+							닉네임 : <input type="text" name="nickname" value="${userInfo.nickname }"><br><br>
+							이메일: <input type="text" name="email" value="${userInfo.email }"><br><br>
+							<input type="submit" value="회원정보변경">
 						</form>
 					</c:forEach>
 				</c:when>
 				
 				
 				<c:when test="${orderInfo != null}">
-					<h3>주문내역</h3>
-					<c:forEach var="orderInfo" items="${orderInfo }">
-						<c:forEach var="productList" items="${productList }">
-							<c:if test="${productList.product_code == orderInfo.order_product_id }">
-								<img src="${productList.product_image }" width="100px">
-								제품명 : ${productList.product_name }
-								주문코드 : ${orderInfo.order_id }
-								사이즈 : ${orderInfo.order_size }
-								수량 : ${orderInfo.order_num }
-								총 금액 : ${orderInfo.order_price }
-								배송지 : ${orderInfo.order_addr }
-							</c:if>
-						</c:forEach>
-						
-					</c:forEach>
+					<div class="bottom_head">주문내역</div>
+					
+					<table class="order_table">
+						<tr>
+							<th>제품정보</th>
+							<th>주문코드</th>
+							<th>사이즈</th>
+							<th>수량</th>
+							<th>주문 금액</th>
+							<th>배송지</th>
+						</tr>	
+						<c:forEach var="orderInfo" items="${orderInfo }">
+							<c:forEach var="productList" items="${productList }">
+								<c:if test="${productList.product_code == orderInfo.order_product_id }">
+									<tr>
+										<td>
+											<img src="${productList.product_image }" width="100px"><br>
+											<a href="/info?product_code=${productList.product_code}">${productList.product_name }</a>
+										</td>
+										<td>
+											${orderInfo.order_id }
+										</td>
+										
+										<td>
+											${orderInfo.order_size }
+										</td>
+										<td>
+											${orderInfo.order_num }
+										</td>
+										<td>
+											<fmt:formatNumber value="${orderInfo.order_price }" pattern="#,###"/>원
+										</td>
+										<td>
+											${orderInfo.order_addr } ${orderInfo.detail_addr }
+										</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</c:forEach>								
+					</table>
 				</c:when>
 				
-				
 				<c:when test="${reviewInfo != null}">
-					<h3>작성한구매후기</h3>
-					<c:forEach var="reviewInfo" items="${reviewInfo }">
-						<c:forEach var="productList" items="${productList }">
-							<c:if test="${productList.product_code == reviewInfo.review_productId }">
-								<img src="${productList.product_image }" width="100px">
-								제품명 : ${productList.product_name }
-								작성내용 : ${reviewInfo.review_content }
-								작성평점 : ${reviewInfo.review_rate }	
+					<div class="bottom_head">작성한구매후기</div>
+					<table class="order_table">
+						<tr>
+							<th>제품명</th>
+							<th>작성내용</th>
+							<th>평점</th>
+						</tr>	
+						<c:forEach var="reviewInfo" items="${reviewInfo }">
+							<c:forEach var="productList" items="${productList }">
+								<c:if test="${productList.product_code == reviewInfo.review_productId }">
+								<tr>
+									<td>
+										<img src="${productList.product_image }" width="100px"><br>
+										<a href="/info?product_code=${productList.product_code}">${productList.product_name }</a>
+									</td>
+									<td>
+										${reviewInfo.review_content }
+									</td>
+									<td>
+										${reviewInfo.review_rate }	
+									</td>
+								</tr>
 							</c:if>
 						</c:forEach>
 					</c:forEach>
+					</table>
 				</c:when>
 				
 				
 				<c:when test="${cartInfo != null}">
-					<h3>장바구니</h3>
-					<c:forEach var="cartInfo" items="${cartInfo }">
-						<c:forEach var="productList" items="${productList }">
-							<c:if test="${productList.product_code == cartInfo.cart_productId }">
-								<img src="${productList.product_image }" width="100px">
-								제품명 : ${productList.product_name }
-								장바구니코드 : ${cartInfo.cart_id }
-								<form action="info">
-									<input type="hidden" name="product_code" value="${productList.product_code}">
-									<input type="submit" value="주문하러가기">
-								</form>
-							</c:if>
-					
+					<div class="bottom_head">장바구니</div>
+					<table class="order_table">
+						<tr>
+							<th>제품명</th>
+							<th>장바구니코드</th>
+						</tr>	
+						<c:forEach var="cartInfo" items="${cartInfo }">
+							<c:forEach var="productList" items="${productList }">
+								<c:if test="${productList.product_code == cartInfo.cart_productId }">
+									<tr>
+										<td>
+											<img src="${productList.product_image }" width="100px"><br>
+											<a href="/info?product_code=${productList.product_code}">${productList.product_name }</a>
+										</td>
+										<td>
+											${cartInfo.cart_id }
+										</td>
+									</tr>
+								</c:if>
 						</c:forEach>
 					</c:forEach>
+					</table>
 				</c:when>
 				
 				

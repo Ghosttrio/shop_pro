@@ -102,3 +102,12 @@ window.addEventListener('load', function(){
         document.querySelector('.btn_open').classList.add('hide'); // 버튼 감춤
     }
 });
+
+document.querySelector('#review_alert').addEventListener('click', function(){
+    alert("로그인이 필요합니다.");
+    location.href="login";
+});
+document.querySelector('#review_alert2').addEventListener('click', function(){
+    alert("로그인이 필요합니다.");
+    location.href="login";
+});

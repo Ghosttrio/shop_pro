@@ -78,8 +78,8 @@ public class ManagerService {
 		return selectProduct;
 	}
 	
-	public int avg_rate(String product_code) {
-		int avg_rate = managerDAO.avg_rate(product_code);
+	public Double avg_rate(String product_code) {
+		Double avg_rate = managerDAO.avg_rate(product_code);
 		return avg_rate;
 	}
 	

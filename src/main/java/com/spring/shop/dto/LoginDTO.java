@@ -26,6 +26,7 @@ public class LoginDTO {
 	private int order_num;
 	private String order_price;
 	private String order_addr;
+	private String detail_addr;
 
 
 	private int review_num;
@@ -34,7 +35,7 @@ public class LoginDTO {
 	private String review_userId;
 	private String review_content;
 	private int review_rate;
-	private String review_productNickname;
+	private int review_max;
 	
 	private String cart_id;
 	private String cart_userId;

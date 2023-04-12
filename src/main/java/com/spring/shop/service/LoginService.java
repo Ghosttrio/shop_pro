@@ -74,5 +74,25 @@ public class LoginService {
 		loginDAO.insert_order(map);
 	}
 	
+	public int review_max() {
+		int review_max = loginDAO.review_max();
+		return review_max;
+	}
+	
+	public void insertReview(LoginDTO loginDTO) {
+		loginDAO.insertReview(loginDTO);
+	}
+	
+	public void reviewDelete(int reviewNum) {
+		loginDAO.reviewDelete(reviewNum);
+	}
+	
+	public List selectReview(int reviewNum) {
+		List list = loginDAO.selectReview(reviewNum);
+		return list;
+	}
+	public void updateReview(LoginDTO loginDTO) {
+		loginDAO.updateReview(loginDTO);
+	}
 	
 }

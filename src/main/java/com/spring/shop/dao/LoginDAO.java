@@ -68,5 +68,36 @@ public class LoginDAO {
 		sqlSession.insert("mapper.login.insert_order", map);
 	}
 	
+	public int review_max() {
+		String review_max = sqlSession.selectOne("mapper.login.review_max");
+		
+
+		if(review_max == null) {
+			review_max = "0";
+			int result =Integer.parseInt(review_max);
+			return result; 
+		}else {
+			int result = Integer.parseInt(review_max);
+			return result; 
+		}
+		
+	}
+	public void insertReview(LoginDTO loginDTO) {
+		sqlSession.insert("mapper.login.insertReview", loginDTO);
+	}
+	
+	public void reviewDelete(int reviewNum) {
+		sqlSession.delete("mapper.login.reviewDelete", reviewNum);
+	}
+	
+	public List selectReview(int reviewNum) {
+		List list = sqlSession.selectList("mapper.login.selectReview_reviewNum", reviewNum);
+		return list;
+	}
+	
+	
+	public void updateReview(LoginDTO loginDTO) {
+		sqlSession.update("mapper.login.updateReview", loginDTO);
+	}
 	
 }

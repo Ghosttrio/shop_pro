@@ -1,7 +1,6 @@
 package com.spring.shop.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,9 +76,18 @@ public class ManagerDAO {
 		List selectProduct =  sqlSession.selectList("mapper.manager.selectProduct_update", product_code);
 		return selectProduct;
 	}
-	public int avg_rate(String product_code) { 
-		int avg_rate = sqlSession.selectOne("mapper.manager.avg_rate", product_code);
-		return avg_rate; 
+	public Double avg_rate(String product_code) { 
+		String avg_rate = sqlSession.selectOne("mapper.manager.avg_rate", product_code);
+		
+		if(avg_rate == null) {
+			avg_rate = "0";
+			Double result =Double.parseDouble(avg_rate);
+			return result; 
+		}else {
+			Double result = Double.parseDouble(avg_rate);
+			return result; 
+		}
+		
 	}
 	
 	public int total_review(String product_code) { 
