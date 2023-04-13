@@ -27,7 +27,21 @@ public class LoginController {
 	@Autowired
 	public LoginDTO dto;
 	
-//	회원가입
+//	로그인창 출력
+	@GetMapping("/login")
+	public String login(){
+		System.out.println("로그인 출력");
+		return "login/login";
+	}
+	
+//	회원가입창 출력
+	@GetMapping("/signup")
+	public String signup(){
+		System.out.println("회원가입 출력");
+		return "signup/signup";
+	}
+	
+//	회원가입 실행
 	@PostMapping("/signup.do")
 	public String signup(
 			@RequestParam("id") String id,
@@ -35,11 +49,6 @@ public class LoginController {
 			@RequestParam("name") String name,
 			@RequestParam("email") String email,
 			@RequestParam("addr") String addr) {
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(email);
-		System.out.println(addr);
 		
 		loginDTO.setId(id);
 		loginDTO.setPw(pw);
@@ -52,7 +61,7 @@ public class LoginController {
 		return "redirect:/login";
 	}
 	
-//	로그인
+//	로그인 실행
 	@PostMapping("/login.do")
 	public String loginDo(
 			Model model, HttpSession session,
@@ -73,7 +82,6 @@ public class LoginController {
 			session.setAttribute("id", id);
 			return "redirect:/main";
 		}
-		
 	}
 	
 //	로그아웃
@@ -84,7 +92,6 @@ public class LoginController {
 	}
 	
 //	중복체크
-	
     @GetMapping("/idCheck.do")
     @ResponseBody
     public List idCheck() {

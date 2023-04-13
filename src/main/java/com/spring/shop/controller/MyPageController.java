@@ -26,6 +26,18 @@ public class MyPageController {
 	@Autowired
 	public LoginDTO loginDTO;
 	
+
+//	마이페이지(계정마다 출력)
+	@GetMapping("/mypage")
+	public String mypage(Model model, HttpSession session){
+		System.out.println("마이페이지 출력");
+		String sessionId = (String) session.getAttribute("id");
+		model.addAttribute("loginInfo", sessionId);
+		
+		return "mypage/mypage";
+	}
+	
+	
 //	회원정보 수정창 출력
 	@GetMapping("/account_update")
 	public String account_update(Model model, HttpSession session,

@@ -37,7 +37,7 @@
 	        	이메일 <input type="text" name="email" placeholder="이메일을 입력하시오">
 	        </div>
 	        <div class="addr_wrap">
-	        	주소 <input type="text" name="addr" placeholder="주소를 입력하시오">
+	        	전화번호 <input type="text" name="addr" placeholder="전화번호를 입력하시오">
 	        </div>
 	        <input id="final_check" type="hidden" >
 	        <div class="btn_wrap">

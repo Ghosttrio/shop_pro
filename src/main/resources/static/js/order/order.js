@@ -46,7 +46,7 @@
                 cid: "TC0ONETIME", // 가맹점 코드
                 partner_order_id: "partner_order_id", // 가맹점 주문번호
                 partner_user_id: "partner_user_id", // 가맹점 회원 id
-                item_name: "상품명 입력", // 상품명
+                item_name: "흰색 티셔츠", // 상품명
                 item_code: "HP1234", // 상품 코드-내부관리용; 필수 아님
                 quantity: 2, //수량
                 total_amount: 10000, //가격
